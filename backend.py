@@ -36,8 +36,10 @@ class WorkoutLog:
     def add_workout(self):
         self.workouts.append(Workout)
 
-log = WorkoutLog()
-workout = Workout("Fitness","Push day", "Focused on squats")
-workout.add_excercise("Dumpbell press", 35, 6, 8, 2.5, "Felt good")
+#log = WorkoutLog()
+#workout = Workout("Fitness","Push day", "Focused on squats")
+#workout.add_excercise("Dumpbell press", 35, 6, 8, 2.5, "Felt good")
+#workout.add_excercise("Squat", 92.5, 4, 9, 3.5, "Felt really hard, good slow" 
+#" technique")
 
-print(workout.excercises[0].excercise_name)
+#print(workout.excercises[1].note)
