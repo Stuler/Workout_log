@@ -11,7 +11,7 @@ class Workout:
         self.excercises = []
 
     def add_excercise(self, excercise_name, excercise_load, 
-        reps_done, serie_rpe, rest_int, note):
+    reps_done, serie_rpe, rest_int, note):
         self.excercises.append(Excercise(excercise_name, excercise_load, 
         reps_done, serie_rpe, rest_int, note))
 
