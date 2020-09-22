@@ -4,7 +4,7 @@ class Workout:
     '''Represents a workout in a logbook.'''
 
     def __init__(self, sport, workout_header, description):
-        self.workout_date = datetime.date.today()
+        self.workout_date = datetime.datetime()
         self.sport = sport 
         self.workout_header = workout_header
         self.description = description
@@ -41,5 +41,3 @@ class WorkoutLog:
 #workout.add_excercise("Dumpbell press", 35, 6, 8, 2.5, "Felt good")
 #workout.add_excercise("Squat", 92.5, 4, 9, 3.5, "Felt really hard, good slow" 
 #" technique")
-
-#print(workout.excercises[1].note)
