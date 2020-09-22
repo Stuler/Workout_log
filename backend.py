@@ -3,14 +3,17 @@ import datetime
 class Workout:
     '''Represents a workout in a logbook.'''
 
-    def __init__(self, sport, workout_header):
+    def __init__(self, sport, workout_header, description):
         self.workout_date = datetime.date.today()
         self.sport = sport 
         self.workout_header = workout_header
+        self.description = description
         self.excercises = []
 
-    def add_excercise(self, ex):
-        self.excercises.append(Excercise)
+    def add_excercise(self, excercise_name, excercise_load, 
+        reps_done, serie_rpe, rest_int, note):
+        self.excercises.append(Excercise(excercise_name, excercise_load, 
+        reps_done, serie_rpe, rest_int, note))
 
 class Excercise:
     '''Represents a particular excercise done during workout.'''
@@ -30,14 +33,11 @@ class WorkoutLog:
     def __init__(self):
         self.workouts = []
 
-    def add_workout(self, workout):
+    def add_workout(self):
         self.workouts.append(Workout)
 
-    def show_workout(self):
-        pass
+log = WorkoutLog()
+workout = Workout("Fitness","Push day", "Focused on squats")
+workout.add_excercise("Dumpbell press", 35, 6, 8, 2.5, "Felt good")
 
-#log = WorkoutLog()
-#workout = Workout("Fitness", "Push workout")
-#excercise = Excercise("Dumbell press", 35, 6, 8, 2.5, "Felt good")
-#workout.add_excercise(excercise)
-#log.add_workout(workout)
+print(workout.excercises[0].excercise_name)
