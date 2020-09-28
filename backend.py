@@ -1,4 +1,5 @@
 import datetime
+import database
 
 class Workout:
     '''Represents a workout in a logbook.'''
