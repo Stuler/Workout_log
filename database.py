@@ -21,11 +21,14 @@ class Database():
             self.conn.commit()
             print("SQLite table created")
 
-    def insert_workout(self, excercises_list):
+    def insert_workout(self, id, exc_name, exc_load, reps_no, serie_rpe, rest, 
+                            note):
             insert_record = '''INSERT INTO workout_data
                             (id, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note)
                             VALUES (?,?,?,?,?,?,?);'''
-            self.cur.executemany(insert_record, excercises_list)
+            excercises_list = (id, exc_name, exc_load, reps_no, serie_rpe, rest, 
+                            note)
+            self.cur.execute(insert_record, excercises_list)
             self.conn.commit()
             print("Python records inserted successfully into database")

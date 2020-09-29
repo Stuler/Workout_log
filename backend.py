@@ -45,5 +45,4 @@ class WorkoutLog:
 log = WorkoutLog()
 workout = Workout("Fitness","Push day", "Focused on squats")
 workout.add_excercise(1, "Dumpbell press", 35, 6, 8, 2.5, "Felt good")
-print(workout.excercises[0].excercise_name)
-#wkout_log.insert_workout(workout.excercises)
+wkout_log.insert_workout(1, "Dumpbell press", 35, 6, 8, 2.5, "Felt good")
