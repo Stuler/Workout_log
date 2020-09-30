@@ -1,7 +1,7 @@
 import datetime
 from database import Database
 
-wkout_log = Database("workout_log.db")
+#wkout_log = Database("workout_log.db")
 
 class Workout:
     '''Represents a workout in a logbook.'''
@@ -42,7 +42,7 @@ class WorkoutLog:
     def add_workout(self):
         self.workouts.append(Workout)
 
-log = WorkoutLog()
-workout = Workout("Fitness","Push day", "Focused on squats")
-workout.add_excercise(1, "Dumpbell press", 35, 6, 8, 2.5, "Felt good")
-wkout_log.insert_workout(1, "Dumpbell press", 35, 6, 8, 2.5, "Felt good")
+#log = WorkoutLog()
+#workout = Workout("Fitness","Push day", "Focused on squats")
+#workout.add_excercise(1, "Dumpbell press", 35, 6, 8, 2.5, "Felt good")
+#wkout_log.insert_workout(2, "Squat", 92, 4, 9, 3, "Felt heavy, not proper technique")
