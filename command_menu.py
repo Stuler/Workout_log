@@ -59,8 +59,8 @@ class Wkout_menu:
     def __init__(self):
         self.database = Database("workout_log.db")   
         self.wkout_choices = {
-            "1": self.add_excr,
-            "2": self.show_excr,
+            "1": self.show_excr,
+            "2": self.add_excr,
             "3": self.modify_excr,
             "4": self.delete_excr,
             "5": self.return_menu
