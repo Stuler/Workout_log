@@ -21,7 +21,7 @@ class Database():
             self.conn.commit()
             print("SQLite table created")
 
-    def insert_workout(self, id, exc_name, exc_load, reps_no, serie_rpe, rest, 
+    def insert_excr(self, id, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note):
             insert_record = '''INSERT INTO workout_data
                             (id, exc_name, exc_load, reps_no, serie_rpe, rest, 
