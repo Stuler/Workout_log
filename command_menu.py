@@ -8,7 +8,7 @@ class Menu:
         self.database = Database("workout_log.db")
         self.choices = {
             "1": self.show_workouts,
-            "2": self.add_wkout_menu,
+            "2": self.add_wkout,
             "3": self.modify_workout,
             "4": self.delete_workout,
             "5": self.quit
@@ -38,22 +38,11 @@ class Menu:
     def show_workouts(self):
         pass
 
-    def add_wkout_menu(self):
-        self.wkout_choices = {
-            "1": 
-        }
 
-    def add_wkout_menu_display(self):
-        print('''
-            1. Add new excercise
-            2. Modify excercise
-            3. Quit adding excercises / finish workout
-        ''')
 
     def add_wkout(self):
         wkout = "Active"
         while wkout == "Active":
-            prompt = input("")
             id = input("Number of an excercise: ")
             excercise_name = input("Excercise: ")
             excercise_load = input("Excercise load: ")
@@ -77,6 +66,34 @@ class Menu:
     def quit(self):
         print("Quitting program")
         sys.exit(0)
+
+class Wkout_menu:    
+    def add_wkout_menu(self):
+        self.wkout_choices = {
+            "1": self.add_excr,
+            "2": self.show_excr,
+            "3": self.modify_excr,
+            "4": self.delete_excr
+        }
+
+    def add_wkout_menu_display(self):
+        print('''
+            1. Add new excercise
+            2. Modify excercise
+            3. Quit adding excercises / finish workout
+        ''')
+
+    def add_excr(self):
+        pass
+
+    def show_excr(self):
+        pass
+
+    def modify_excr(self):
+        pass
+
+    def delete_excr(self):
+        pass
 
 if __name__ == "__main__":
     Menu().run()
