@@ -39,7 +39,8 @@ class Menu:
         pass
 
     def add_wkout(self):
-        pass
+        Wkout_menu().run()
+
 
     def add_exc(self):
         pass
@@ -61,7 +62,8 @@ class Wkout_menu:
             "1": self.add_excr,
             "2": self.show_excr,
             "3": self.modify_excr,
-            "4": self.delete_excr
+            "4": self.delete_excr,
+            "5": self.return_menu
         }
 
     def add_wkout_menu_display(self):
@@ -69,8 +71,19 @@ class Wkout_menu:
             1. Show excercises
             2. Add new excercise
             3. Modify excercise
-            4. Quit adding excercises / finish workout
+            4. Delete excercise
+            5. Quit adding excercises / finish workout
         ''')
+
+    def run(self):
+        while True:
+            self.add_wkout_menu_display()
+            choice = input("Enter an option: ")
+            action = self.wkout_choices.get(choice)
+            if action:
+                action()
+            else:
+                print(f"{choice} is not a valid choice.")
 
     def show_excr(self):
         pass
@@ -94,6 +107,9 @@ class Wkout_menu:
 
     def delete_excr(self):
         pass
+
+    def return_menu(self):
+        Menu().run()
 
 if __name__ == "__main__":
     Menu().run()
