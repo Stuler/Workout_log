@@ -1,5 +1,5 @@
 import sys
-from backend import Workout, Excercise, WorkoutLog
+from backend import WorkoutLog
 from database import Database
 
 class Menu:
@@ -63,7 +63,7 @@ class Wkout_menu:
             "2": self.add_excr,
             "3": self.modify_excr,
             "4": self.delete_excr,
-            "5": self.return_menu
+            "5": self.save_wkout
         }
 
     def add_wkout_menu_display(self):
@@ -108,7 +108,7 @@ class Wkout_menu:
     def delete_excr(self):
         pass
 
-    def return_menu(self):
+    def save_wkout(self):
         Menu().run()
 
 if __name__ == "__main__":

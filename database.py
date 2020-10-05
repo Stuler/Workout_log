@@ -4,8 +4,16 @@ class Database():
 
     def __init__(self, db):
             self.conn = sqlite3.connect(db)
+
+            create_table =  ('''CREATE TABLE IF NOT EXISTS wkout(
+                                        id INTEGER PRIMARY KEY,
+                                        workout_date TEXT NOT NULL,
+                                        sport TEXT NOT NULL,
+                                        workout_header TEXT NOT NULL,
+                                        description TEXT,
+                                        );''')
             
-            create_table =  ('''CREATE TABLE IF NOT EXISTS workout_data(
+            create_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
                                         id INTEGER PRIMARY KEY,
                                         exc_name TEXT NOT NULL,
                                         exc_load REAL NOT NULL,
@@ -23,7 +31,7 @@ class Database():
 
     def insert_excr(self, id, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note):
-            insert_record = '''INSERT INTO workout_data
+            insert_record = '''INSERT INTO excr_lst
                             (id, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note)
                             VALUES (?,?,?,?,?,?,?);'''
