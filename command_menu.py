@@ -72,7 +72,7 @@ class Wkout_menu:
             2. Add new excercise
             3. Modify excercise
             4. Delete excercise
-            5. Quit adding excercises / finish workout
+            5. Save and finish workout
         ''')
 
     def run(self):
@@ -89,18 +89,26 @@ class Wkout_menu:
         pass
 
     def add_excr(self):
-        wkout = "Active"
-        while wkout == "Active":
-            id = input("Number of an excercise: ")
-            excercise_name = input("Excercise: ")
-            excercise_load = input("Excercise load: ")
-            reps_done = input("Repeats done: ")
-            serie_rpe = input("RPE of an effort: ")
-            rest_int = input("Length of rest interval: ")
-            note = input("Additional note: ")
-            self.database.insert_excr(id, excercise_name, excercise_load, 
-                                        reps_done, serie_rpe, rest_int, note)
-            print("Excercise has been added to the workout!")
+        id = input("Number of an excercise: ")
+        excercise_name = input("Excercise: ")
+        excercise_load = input("Excercise load: ")
+        reps_done = input("Repeats done: ")
+        serie_rpe = input("RPE of an effort: ")
+        rest_int = input("Length of rest interval: ")
+        note = input("Additional note: ")
+        self.database.insert_excr(id, excercise_name, excercise_load, 
+                                    reps_done, serie_rpe, rest_int, note)      
+
+    def add_excr_menu(self):
+        self.excr_menu_choices = {
+            "1": self.add_excr,
+            "2": self.save_wkout
+        }
+ 
+    def add_excr_menu_display(self):
+        print('''Excercise has been added to the workout!
+                        1. Add another excercise
+                        2. Save workout and return to the menu ''')
 
     def modify_excr(self):
         pass
