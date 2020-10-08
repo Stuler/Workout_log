@@ -86,7 +86,10 @@ class Wkout_menu:
                 print(f"{choice} is not a valid choice.")
 
     def show_excr(self):
-        pass
+        self.excs = self.database.show_excr()
+        for excercise in self.excs:
+            print (f'''{self.id}. {self.exc_name} {self.exc_load} {self.reps_no}
+                   {self.serie_rpe} {self.rest} {self.note}\n''')
 
     def add_excr(self):
         id = input("Number of an excercise: ")
