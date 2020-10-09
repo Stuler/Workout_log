@@ -99,7 +99,8 @@ class Wkout_menu:
         rest_int = input("Length of rest interval: ")
         note = input("Additional note: ")
         self.database.insert_excr(id, excercise_name, excercise_load, 
-                                    reps_done, serie_rpe, rest_int, note)      
+                                    reps_done, serie_rpe, rest_int, note)
+        self.database.show_added_excr(id)
 
     def add_excr_menu(self):
         self.excr_menu_choices = {

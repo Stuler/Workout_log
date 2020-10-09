@@ -46,6 +46,9 @@ class Database():
         self.cur.execute(show_excr_query)
         excercises = self.cur.fetchall()
         return excercises
-        #for excercise in excercises:
-        #    print (f'''{self.id}. {self.exc_name} {self.exc_load} {self.reps_no}
-        #           {self.serie_rpe} {self.rest} {self.note}\n''')
+
+    def show_added_excr(self, excr_id):
+        show_added_query = '''SELECT * from excr_lst where id = ?'''
+        self.cur.execute(show_added_query, (excr_id,))
+        added_excr = self.cur.fetchone()
+        print(added_excr, "\n")
