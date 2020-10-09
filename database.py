@@ -49,4 +49,3 @@ class Database():
         #for excercise in excercises:
         #    print (f'''{self.id}. {self.exc_name} {self.exc_load} {self.reps_no}
         #           {self.serie_rpe} {self.rest} {self.note}\n''')
-        self.cur.close()
