@@ -9,7 +9,8 @@ class Database():
         self.conn = sqlite3.connect(db)
 
         create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout_lst(
-                                wkout_id INTEGER PRIMARY KEY,
+                                wkout_id    INTEGER PRIMARY KEY 
+                                            AUTOINCREMENT UNIQUE NOT NULL,
                                 workout_date TEXT NOT NULL,
                                 sport TEXT NOT NULL,
                                 workout_header TEXT NOT NULL,
@@ -17,13 +18,16 @@ class Database():
                                 );''')
         
         create_excr_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
-                                excr_id INTEGER PRIMARY KEY,
+                                workout_no INTEGER NOT NULL,
+                                FOREIGN KEY (workout_no) REFERENCES wkout_lst,
+                                excr_id     INTEGER PRIMARY KEY 
+                                            AUTOINCREMENT UNIQUE NOT NULL,
                                 exc_name TEXT NOT NULL,
                                 exc_load REAL NOT NULL,
                                 reps_no INTEGER NOT NULL,
                                 serie_rpe INTEGER,
                                 rest REAL,
-                                note TEXT
+                                note TEXT,
                                 );''')
         
         self.cur = self.conn.cursor()
