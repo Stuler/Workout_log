@@ -8,7 +8,7 @@ class Database():
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
 
-        create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout(
+        create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout_lst(
                                 wkout_id INTEGER PRIMARY KEY,
                                 workout_date TEXT NOT NULL,
                                 sport TEXT NOT NULL,
@@ -41,7 +41,7 @@ class Database():
         global wkout_id
         wkout_id += 1
         self.id = wkout_id
-        insert_record = '''INSERT INTO excr_lst
+        insert_record = '''INSERT INTO wkout_lst
                             (wkout_id, wkout_date, sport, wkout_header,
                                 wkout_desc)
                             VALUES (?,?,?,?,?);'''
