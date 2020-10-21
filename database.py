@@ -8,27 +8,28 @@ class Database():
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
 
-        create_table =  ('''CREATE TABLE IF NOT EXISTS wkout(
-                        wkout_id INTEGER PRIMARY KEY,
-                        workout_date TEXT NOT NULL,
-                        sport TEXT NOT NULL,
-                        workout_header TEXT NOT NULL,
-                        wkout_desc TEXT,
-                        );''')
+        create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout(
+                                wkout_id INTEGER PRIMARY KEY,
+                                workout_date TEXT NOT NULL,
+                                sport TEXT NOT NULL,
+                                workout_header TEXT NOT NULL,
+                                wkout_desc TEXT,
+                                );''')
         
-        create_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
-                        excr_id INTEGER PRIMARY KEY,
-                        exc_name TEXT NOT NULL,
-                        exc_load REAL NOT NULL,
-                        reps_no INTEGER NOT NULL,
-                        serie_rpe INTEGER,
-                        rest REAL,
-                        note TEXT
-                        );''')
+        create_excr_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
+                                excr_id INTEGER PRIMARY KEY,
+                                exc_name TEXT NOT NULL,
+                                exc_load REAL NOT NULL,
+                                reps_no INTEGER NOT NULL,
+                                serie_rpe INTEGER,
+                                rest REAL,
+                                note TEXT
+                                );''')
         
         self.cur = self.conn.cursor()
         print("Successfully connected to SQLite")
-        self.cur.execute(create_table)
+        self.cur.execute(create_wkout_table)
+        self.cur.execute(create_excr_table)
         self.conn.commit()
         print("SQLite table created")
 
