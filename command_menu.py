@@ -91,7 +91,6 @@ class Wkout_menu:
             print (excercise)
 
     def add_excr(self):
-        id = input("Number of an excercise: ")
         excercise_name = input("Excercise: ")
         excercise_load = input("Excercise load: ")
         reps_done = input("Repeats done: ")
