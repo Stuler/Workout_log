@@ -39,11 +39,12 @@ class Menu:
         pass
 
     def add_wkout(self):
+        wkoutDate = input("Workout date (DD/MM/YYYY): ")
+        sport = input("Sport: ")
+        wkoutHeader = input("Workout name: ")
+        wkoutDesc = input("Description of a workout: ")
+        self.database.insert_wkout(wkoutDate, sport, wkoutHeader, wkoutDesc)
         Wkout_menu().run()
-
-
-    def add_exc(self):
-        pass
 
     def modify_workout(self):
         pass
@@ -97,7 +98,7 @@ class Wkout_menu:
         serie_rpe = input("RPE of an effort: ")
         rest_int = input("Length of rest interval: ")
         note = input("Additional note: ")
-        self.database.insert_excr(id, excercise_name, excercise_load, 
+        self.database.insert_excr(excercise_name, excercise_load, 
                                     reps_done, serie_rpe, rest_int, note)
         self.database.show_added_excr(id)
 
