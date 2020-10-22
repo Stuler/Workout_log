@@ -52,8 +52,9 @@ class Database():
     def insert_excr(self, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note):
         insert_record = '''INSERT INTO excr_lst
-                            (exc_name, exc_load, reps_no, serie_rpe, rest, note)
-                            VALUES (?,?,?,?,?,?);'''
+                            (exc_name, exc_load, reps_no, serie_rpe, rest, note,
+                            wkout_id)
+                            VALUES (?,?,?,?,?,?,?);'''
         excercises_list = (exc_name, exc_load, reps_no, serie_rpe, rest, note)
         self.cur.execute(insert_record, excercises_list)
         self.conn.commit()
