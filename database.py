@@ -37,9 +37,6 @@ class Database():
 
     def insert_wkout(self, wkout_date, sport, wkout_header,
                      wkout_desc):
-        self.sport = sport
-        self.wkout_header = wkout_header
-        self.wkout_desc = wkout_desc
         insert_record = '''INSERT INTO wkout_lst
                             (wkout_date, sport, wkout_header, wkout_desc)
                             VALUES (?,?,?,?);'''
