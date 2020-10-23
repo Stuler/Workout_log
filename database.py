@@ -25,7 +25,8 @@ class Database():
                                 rest REAL,
                                 note TEXT,
                                 wkout_id INTEGER NOT NULL,
-                                FOREIGN KEY (wkout_id) REFERENCES wkout_lst(id)
+                                FOREIGN KEY (wkout_id) 
+                                    REFERENCES wkout_lst(id)
                                 );''')
         
         self.cur = self.conn.cursor()
@@ -47,12 +48,13 @@ class Database():
         print("Excercise data inserted successfully into database")
 
     def insert_excr(self, exc_name, exc_load, reps_no, serie_rpe, rest, 
-                            note):
+                            note, wkout_id):
         insert_record = '''INSERT INTO excr_lst
                             (exc_name, exc_load, reps_no, serie_rpe, rest, note,
                             wkout_id)
                             VALUES (?,?,?,?,?,?,?);'''
-        excercises_list = (exc_name, exc_load, reps_no, serie_rpe, rest, note)
+        excercises_list = (exc_name, exc_load, reps_no, 
+                            serie_rpe, rest, note, wkout_id)
         self.cur.execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
