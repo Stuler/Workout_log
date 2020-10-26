@@ -1,8 +1,5 @@
 import sqlite3
 
-wkout_id = 0
-excr_id = 0
-
 class Database():
 
     def __init__(self, db):
@@ -17,7 +14,6 @@ class Database():
                                 );''')
         
         create_excr_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
-                                excID INTEGER PRIMARY KEY,
                                 exc_name TEXT NOT NULL,
                                 exc_load REAL NOT NULL,
                                 reps_no INTEGER NOT NULL,
