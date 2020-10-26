@@ -14,6 +14,7 @@ class Database():
                                 );''')
         
         create_excr_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
+                                id INTEGER PRIMARY KEY,
                                 exc_name TEXT NOT NULL,
                                 exc_load REAL NOT NULL,
                                 reps_no INTEGER NOT NULL,
@@ -25,10 +26,11 @@ class Database():
                                     REFERENCES wkout_lst(id)
                                 );''')
         
-        self.cur = self.conn.cursor()
+        self.cur_wkout = self.conn.cursor()
+        self.cur_excr = self.conn.cursor()
         print("Successfully connected to SQLite")
-        self.cur.execute(create_wkout_table)
-        self.cur.execute(create_excr_table)
+        self.cur_wkout.execute(create_wkout_table)
+        self.cur_excr.execute(create_excr_table)
         self.conn.commit()
         print("SQLite table created")
 
@@ -39,7 +41,7 @@ class Database():
                             VALUES (?,?,?,?);'''
         wkout_data = (wkout_date, sport, wkout_header,
                             wkout_desc)
-        self.cur.execute(insert_record, wkout_data)
+        self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
 
@@ -51,18 +53,18 @@ class Database():
                             VALUES (?,?,?,?,?,?,?);'''
         excercises_list = (exc_name, exc_load, reps_no, 
                             serie_rpe, rest, note, wkout_id)
-        self.cur.execute(insert_record, excercises_list)
+        self.cur_excr.execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
 
     def show_excr(self):
         show_excr_query = '''SELECT * from excr_lst'''
-        self.cur.execute(show_excr_query)
-        excercises = self.cur.fetchall()
+        self.cur_excr.execute(show_excr_query)
+        excercises = self.cur_excr.fetchall()
         return excercises
 
     def show_added_excr(self, excr_id):
         show_added_query = '''SELECT * from excr_lst'''
-        self.cur.execute(show_added_query, ())
-        added_excr = self.cur.fetchone()
+        self.cur_excr.execute(show_added_query, ())
+        added_excr = self.cur_excr.fetchone()
         print(added_excr, "\n")
