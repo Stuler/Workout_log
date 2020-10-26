@@ -6,7 +6,7 @@ class Database():
         self.conn = sqlite3.connect(db)
 
         create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout_lst(
-                                id INTEGER PRIMARY KEY,
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 wkout_date TEXT NOT NULL,
                                 sport TEXT NOT NULL,
                                 wkout_header TEXT,
@@ -14,16 +14,15 @@ class Database():
                                 );''')
         
         create_excr_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
-                                id INTEGER PRIMARY KEY,
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 exc_name TEXT NOT NULL,
                                 exc_load REAL NOT NULL,
                                 reps_no INTEGER NOT NULL,
                                 serie_rpe INTEGER,
                                 rest REAL,
                                 note TEXT,
-                                wkout_id INTEGER NOT NULL,
-                                FOREIGN KEY (wkout_id) 
-                                    REFERENCES wkout_lst(id)
+                                wkout_id INTEGER,
+                                FOREIGN KEY (wkout_id) REFERENCES wkout_lst(id)
                                 );''')
         
         self.cur_wkout = self.conn.cursor()

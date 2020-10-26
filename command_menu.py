@@ -102,7 +102,8 @@ class Wkout_menu:
         wkout_id = self.database.cur_wkout.lastrowid
         self.database.insert_excr(excercise_name, excercise_load, reps_done, 
                                     serie_rpe, rest_int, note, wkout_id)
-        self.database.show_added_excr(self.database.cur_excr.lastrowid)
+        self.database.show_added_excr(self.database.cur_wkout.lastrowid)
+        print(wkout_id)
 
     def add_excr_menu(self):
         self.excr_menu_choices = {
