@@ -9,16 +9,16 @@ class Database():
         self.cur_wkout = self.conn.cursor()
         self.cur_excr = self.conn.cursor()
 
-        create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout_lst(
-                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+        create_wkout_table =    ('''CREATE TABLE IF NOT EXISTS wkout_lst(
+                                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                 wkout_date TEXT NOT NULL,
                                 sport TEXT NOT NULL,
                                 wkout_header TEXT,
                                 wkout_desc TEXT
                                 );''')
         
-        create_excr_table =  ('''CREATE TABLE IF NOT EXISTS excr_lst(
-                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+        create_excr_table =     ('''CREATE TABLE IF NOT EXISTS excr_lst(
+                                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                 exc_name TEXT NOT NULL,
                                 exc_load REAL NOT NULL,
                                 reps_no INTEGER NOT NULL,
