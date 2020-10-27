@@ -4,6 +4,10 @@ class Database():
 
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
+        self.conn.execute("PRAGMA foreign_keys = 1")
+
+        self.cur_wkout = self.conn.cursor()
+        self.cur_excr = self.conn.cursor()
 
         create_wkout_table =  ('''CREATE TABLE IF NOT EXISTS wkout_lst(
                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,8 +29,6 @@ class Database():
                                 FOREIGN KEY (wkoutId) REFERENCES wkout_lst(id)
                                 );''')
         
-        self.cur_wkout = self.conn.cursor()
-        self.cur_excr = self.conn.cursor()
         print("Successfully connected to SQLite")
         self.cur_wkout.execute(create_wkout_table)
         self.cur_excr.execute(create_excr_table)
@@ -43,6 +45,10 @@ class Database():
         self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
+
+    def get_wkout_id(self):
+        self.wkout_id = self.cur_wkout.lastrowid
+        return(self.wkout_id)
 
     def insert_excr(self, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note, wkout_id):
