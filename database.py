@@ -21,8 +21,8 @@ class Database():
                                 serie_rpe INTEGER,
                                 rest REAL,
                                 note TEXT,
-                                wkout_id INTEGER,
-                                FOREIGN KEY (wkout_id) REFERENCES wkout_lst(id)
+                                wkoutId INTEGER NOT NULL,
+                                FOREIGN KEY (wkoutId) REFERENCES wkout_lst(id)
                                 );''')
         
         self.cur_wkout = self.conn.cursor()
@@ -48,7 +48,7 @@ class Database():
                             note, wkout_id):
         insert_record = '''INSERT INTO excr_lst
                             (exc_name, exc_load, reps_no, serie_rpe, rest, note,
-                            wkout_id)
+                            wkoutId)
                             VALUES (?,?,?,?,?,?,?);'''
         excercises_list = (exc_name, exc_load, reps_no, 
                             serie_rpe, rest, note, wkout_id)

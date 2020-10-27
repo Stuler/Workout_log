@@ -47,6 +47,10 @@ class Menu:
                                     wkoutDesc)
         Wkout_menu().run()
 
+    def get_wkout_id(self):
+        self.wkout_id = self.database.cur_wkout.lastrowid
+        return(self.wkout_id)
+
     def modify_workout(self):
         pass
 
@@ -99,12 +103,11 @@ class Wkout_menu:
         serie_rpe = input("RPE of an effort: ")
         rest_int = input("Length of rest interval: ")
         note = input("Additional note: ")
-        wkout_id = self.database.cur_wkout.lastrowid
+        wID = Menu().get_wkout_id()
         self.database.insert_excr(excercise_name, excercise_load, reps_done, 
-                                    serie_rpe, rest_int, note, wkout_id)
-        self.database.show_added_excr(self.database.cur_wkout.lastrowid)
-        print(wkout_id)
-
+                                    serie_rpe, rest_int, note, wID)
+        print(wID)
+        
     def add_excr_menu(self):
         self.excr_menu_choices = {
             "1": self.add_excr,
