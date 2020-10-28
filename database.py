@@ -26,7 +26,7 @@ class Database():
                                 rest REAL,
                                 note TEXT,
                                 wkoutId INTEGER NOT NULL,
-                                FOREIGN KEY (wkoutId) REFERENCES wkout_lst(id)
+                                FOREIGN KEY (wkoutId) REFERENCES wkout_lst (id)
                                 );''')
         
         print("Successfully connected to SQLite")
@@ -45,10 +45,6 @@ class Database():
         self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
-
-    def get_wkout_id(self):
-        self.wkout_id = self.cur_wkout.lastrowid
-        return(self.wkout_id)
 
     def insert_excr(self, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note, wkout_id):
