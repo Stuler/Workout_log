@@ -45,11 +45,12 @@ class Menu:
         wkoutDesc = input("Description of a workout: ")
         self.database.insert_wkout(wkoutDate, sport, wkoutHeader, 
                                     wkoutDesc)
+        print(self.get_wkout_id())
         Wkout_menu().run()
 
     def get_wkout_id(self):
-        self.wkout_id = self.database.cur_wkout.lastrowid
-        return(self.wkout_id)
+        wkout_id = self.database.cur_wkout.lastrowid
+        return(wkout_id)
 
     def modify_workout(self):
         pass
@@ -107,7 +108,7 @@ class Wkout_menu:
         print(wID)
         self.database.insert_excr(excercise_name, excercise_load, reps_done, 
                                     serie_rpe, rest_int, note, wID)
-        
+      
     def add_excr_menu(self):
         self.excr_menu_choices = {
             "1": self.add_excr,
