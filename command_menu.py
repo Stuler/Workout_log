@@ -45,8 +45,6 @@ class Menu:
         wkoutDesc = input("Description of a workout: ")
         self.database.insert_wkout(wkoutDate, sport, wkoutHeader, 
                                     wkoutDesc)
-        wID = self.database.cur_wkout.lastrowid
-        print(wID)
         Wkout_menu().run()
 
     def get_wkout_id(self):
@@ -106,6 +104,7 @@ class Wkout_menu:
         rest_int = input("Length of rest interval: ")
         note = input("Additional note: ")
         wID = Menu().get_wkout_id()
+        print(wID)
         self.database.insert_excr(excercise_name, excercise_load, reps_done, 
                                     serie_rpe, rest_int, note, wID)
         
