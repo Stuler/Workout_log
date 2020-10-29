@@ -4,7 +4,6 @@ from database import Database
 
 class Menu:
     def __init__(self):
-        self.log = WorkoutLog()
         self.database = Database("workout_log.db")
         self.choices = {
             "1": self.show_workouts,
@@ -64,7 +63,7 @@ class Menu:
 
 class Wkout_menu: 
     def __init__(self):
-        self.database = Database("workout_log.db")   
+
         self.wkout_choices = {
             "1": self.show_excr,
             "2": self.add_excr,
@@ -106,7 +105,7 @@ class Wkout_menu:
         note = input("Additional note: ")
         wID = Menu().get_wkout_id()
         print(wID)
-        self.database.insert_excr(excercise_name, excercise_load, reps_done, 
+        Menu().database.insert_excr(excercise_name, excercise_load, reps_done, 
                                     serie_rpe, rest_int, note, wID)
       
     def add_excr_menu(self):
