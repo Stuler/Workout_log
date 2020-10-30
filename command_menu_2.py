@@ -2,9 +2,12 @@ import sys
 from backend import WorkoutLog
 from database import Database
 
-class Menu:
+class DBase:
     def __init__(self):
         self.database = Database("workout_log.db")
+
+class Menu:
+    def __init__(self):
         self.choices = {
             "1": self.show_workouts,
             "2": self.add_wkout,
@@ -42,13 +45,14 @@ class Menu:
         sport = input("Sport: ")
         wkoutHeader = input("Workout name: ")
         wkoutDesc = input("Description of a workout: ")
-        self.database.insert_wkout(wkoutDate, sport, wkoutHeader, 
+        DBase().database.insert_wkout(wkoutDate, sport, wkoutHeader, 
                                     wkoutDesc)
-        print(self.get_wkout_id())
+        wID = self.get_wkout_id()
+        print (wID)
         Wkout_menu().run()
 
     def get_wkout_id(self):
-        wkout_id = self.database.cur_wkout.lastrowid
+        wkout_id = DBase().database.cur_wkout.lastrowid
         return(wkout_id)
 
     def modify_workout(self):
@@ -105,8 +109,8 @@ class Wkout_menu:
         note = input("Additional note: ")
         wID = Menu().get_wkout_id()
         print(wID)
-        Menu().database.insert_excr(excercise_name, excercise_load, reps_done, 
-                                    serie_rpe, rest_int, note, wID)
+        #DBase.insert_excr(excercise_name, excercise_load, reps_done, 
+        #                            serie_rpe, rest_int, note, wID)
       
     def add_excr_menu(self):
         self.excr_menu_choices = {

@@ -4,7 +4,7 @@ class Database():
 
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
-        self.conn.execute("PRAGMA foreign_keys = 1")
+        self.conn.execute("PRAGMA foreign_keys = ON")
 
         self.cur_wkout = self.conn.cursor()
         self.cur_excr = self.conn.cursor()
