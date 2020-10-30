@@ -2,6 +2,10 @@ import sys
 from backend import WorkoutLog
 from database import Database
 
+# TO SOLVE: cursors are recreated each time a workout is added?
+# in database.py, get_wkout_id is working, but when called from command_menu,
+# cursors are reset
+
 class DBase:
     def __init__(self):
         self.database = Database("workout_log.db")
@@ -47,13 +51,9 @@ class Menu:
         wkoutDesc = input("Description of a workout: ")
         DBase().database.insert_wkout(wkoutDate, sport, wkoutHeader, 
                                     wkoutDesc)
-        wID = self.get_wkout_id()
+        wID = DBase().database.get_wkout_id()
         print (wID)
         Wkout_menu().run()
-
-    def get_wkout_id(self):
-        wkout_id = DBase().database.cur_wkout.lastrowid
-        return(wkout_id)
 
     def modify_workout(self):
         pass
@@ -109,8 +109,8 @@ class Wkout_menu:
         note = input("Additional note: ")
         wID = Menu().get_wkout_id()
         print(wID)
-        #DBase.insert_excr(excercise_name, excercise_load, reps_done, 
-        #                            serie_rpe, rest_int, note, wID)
+        DBase.insert_excr(excercise_name, excercise_load, reps_done, 
+                                    serie_rpe, rest_int, note, wID)
       
     def add_excr_menu(self):
         self.excr_menu_choices = {

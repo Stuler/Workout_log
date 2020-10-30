@@ -8,7 +8,8 @@ class Database():
 
         self.cur_wkout = self.conn.cursor()
         self.cur_excr = self.conn.cursor()
-
+    
+    def create_tables(self):
         create_wkout_table =    ('''CREATE TABLE IF NOT EXISTS wkout_lst(
                                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                 wkout_date TEXT NOT NULL,
@@ -44,7 +45,8 @@ class Database():
                             wkout_desc)
         self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
-        print("Excercise data inserted successfully into database")
+        print(self.get_wkout_id())
+        print("Workout data inserted successfully into database")
 
     def insert_excr(self, exc_name, exc_load, reps_no, serie_rpe, rest, 
                             note, wkout_id):
@@ -57,6 +59,10 @@ class Database():
         self.cur_excr.execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
+
+    def get_wkout_id(self):
+        self.wkout_id = self.cur_wkout.lastrowid
+        return(self.wkout_id)
 
     def show_excr(self):
         show_excr_query = '''SELECT * from excr_lst'''
