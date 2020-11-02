@@ -50,9 +50,8 @@ class Menu:
         sport = input("Sport: ")
         wkoutHeader = input("Workout name: ")
         wkoutDesc = input("Description of a workout: ")
-        DBase().database.insert_wkout(wkoutDate, sport, wkoutHeader, 
-                                    wkoutDesc)
-        wID = DBase().database.get_wkout_id()
+        wID = DBase().database.insert_wkout(wkoutDate, sport, wkoutHeader, 
+                                            wkoutDesc)
         print (wID)
         Wkout_menu().run()
 
@@ -102,7 +101,7 @@ class Wkout_menu:
             print (excercise)
 
     def add_excr(self):
-        wID = DBase().database.get_wkout_id()
+        wID = Menu().add_wkout().wID
         excercise_name = input("Excercise: ")
         excercise_load = input("Excercise load: ")
         reps_done = input("Repeats done: ")
