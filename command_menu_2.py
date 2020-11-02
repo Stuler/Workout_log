@@ -50,8 +50,8 @@ class Menu:
         sport = input("Sport: ")
         wkoutHeader = input("Workout name: ")
         wkoutDesc = input("Description of a workout: ")
-        wID = DBase().database.insert_wkout(wkoutDate, sport, wkoutHeader, 
-                                            wkoutDesc)
+        data = (wkoutDate, sport, wkoutHeader, wkoutDesc) 
+        wID = DBase().database.insert_wkout(data)
         print (wID)
         Wkout_menu().run()
 

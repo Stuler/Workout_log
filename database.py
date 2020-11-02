@@ -37,13 +37,10 @@ class Database():
         self.conn.commit()
         print("Excercise table created")
 
-    def insert_wkout(self, wkout_date, sport, wkout_header,
-                     wkout_desc):
+    def insert_wkout(self, wkout_data):
         insert_record = '''INSERT INTO wkout_lst
                             (wkout_date, sport, wkout_header, wkout_desc)
                             VALUES (?,?,?,?);'''
-        wkout_data = (wkout_date, sport, wkout_header,
-                            wkout_desc)
         self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
         print("Workout data inserted successfully into database")
