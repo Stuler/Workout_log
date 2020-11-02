@@ -9,6 +9,7 @@ from database import Database
 class DBase:
     def __init__(self):
         self.database = Database("workout_log.db")
+        self.database.create_tables()
 
 class Menu:
     def __init__(self):
@@ -101,16 +102,15 @@ class Wkout_menu:
             print (excercise)
 
     def add_excr(self):
+        wID = DBase().database.get_wkout_id()
         excercise_name = input("Excercise: ")
         excercise_load = input("Excercise load: ")
         reps_done = input("Repeats done: ")
         serie_rpe = input("RPE of an effort: ")
         rest_int = input("Length of rest interval: ")
         note = input("Additional note: ")
-        wID = Menu().get_wkout_id()
-        print(wID)
-        DBase.insert_excr(excercise_name, excercise_load, reps_done, 
-                                    serie_rpe, rest_int, note, wID)
+        DBase().database.insert_excr(wID, excercise_name, excercise_load, reps_done, 
+                                    serie_rpe, rest_int, note)
       
     def add_excr_menu(self):
         self.excr_menu_choices = {

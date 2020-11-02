@@ -7,13 +7,10 @@ class Database():
         self.conn.execute("PRAGMA foreign_keys = ON")
         print("Successfully connected to SQLite")
 
-    def get_wk_cursor(self):
         self.cur_wkout = self.conn.cursor()
-
-    def get_ex_cursor(self):
         self.cur_excr = self.conn.cursor()
     
-    def create_wk_tbl(self):
+    def create_tables(self):
         create_wkout_table =    ('''CREATE TABLE IF NOT EXISTS wkout_lst(
                                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                 wkout_date TEXT NOT NULL,
@@ -23,9 +20,8 @@ class Database():
                                 );''')
         self.cur_wkout.execute(create_wkout_table)
         self.conn.commit()
-        print("SQLite table created")
+        print("Workout table created")
         
-    def create_exc_tbl(self):    
         create_excr_table =     ('''CREATE TABLE IF NOT EXISTS excr_lst(
                                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                 wkoutId INTEGER NOT NULL,
@@ -39,7 +35,7 @@ class Database():
                                 );''')
         self.cur_excr.execute(create_excr_table)
         self.conn.commit()
-        print("SQLite table created")
+        print("Excercise table created")
 
     def insert_wkout(self, wkout_date, sport, wkout_header,
                      wkout_desc):
@@ -50,17 +46,17 @@ class Database():
                             wkout_desc)
         self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
-        print(self.get_wkout_id())
         print("Workout data inserted successfully into database")
+        return self.cur_wkout.lastrowid
 
-    def insert_excr(self, exc_name, exc_load, reps_no, serie_rpe, rest, 
-                            note, wkout_id):
+    def insert_excr(self,wkout_id, exc_name, exc_load, reps_no, serie_rpe, rest, 
+                            note ):
         insert_record = '''INSERT INTO excr_lst
-                            (exc_name, exc_load, reps_no, serie_rpe, rest, note,
-                            wkoutId)
+                            (wkoutId, exc_name, exc_load, reps_no, serie_rpe, 
+                            rest, note)
                             VALUES (?,?,?,?,?,?,?);'''
-        excercises_list = (exc_name, exc_load, reps_no, 
-                            serie_rpe, rest, note, wkout_id)
+        excercises_list = (wkout_id,exc_name, exc_load, reps_no, 
+                            serie_rpe, rest, note)
         self.cur_excr.execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
