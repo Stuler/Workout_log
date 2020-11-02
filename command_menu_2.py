@@ -13,12 +13,20 @@ class DBase:
 
 class Menu:
     def __init__(self):
-        self.choices = {
+        self.main_choices = {
             "1": self.show_workouts,
             "2": self.add_wkout,
             "3": self.modify_workout,
             "4": self.delete_workout,
             "5": self.quit
+        }
+
+        self.wkout_choices = {
+            "1": self.show_excr,
+            "2": self.add_excr,
+            "3": self.modify_excr,
+            "4": self.delete_excr,
+            "5": self.save_wkout
         }
 
     def display_menu(self):
@@ -36,7 +44,7 @@ class Menu:
         while True:
             self.display_menu()
             choice = input("Enter an option: ")
-            action = self.choices.get(choice)
+            action = self.main_choices.get(choice)
             if action:
                 action()
             else:
@@ -53,7 +61,7 @@ class Menu:
         data = (wkoutDate, sport, wkoutHeader, wkoutDesc) 
         wID = DBase().database.insert_wkout(data)
         print (wID)
-        Wkout_menu().run()
+        self.add_excr_run()
 
     def modify_workout(self):
         pass
@@ -65,17 +73,6 @@ class Menu:
         print("Quitting program")
         sys.exit(0)
 
-class Wkout_menu: 
-    def __init__(self):
-
-        self.wkout_choices = {
-            "1": self.show_excr,
-            "2": self.add_excr,
-            "3": self.modify_excr,
-            "4": self.delete_excr,
-            "5": self.save_wkout
-        }
-
     def add_wkout_menu_display(self):
         print('''
             1. Show excercises
@@ -85,7 +82,7 @@ class Wkout_menu:
             5. Save and finish workout
         ''')
 
-    def run(self):
+    def add_excr_run(self):
         while True:
             self.add_wkout_menu_display()
             choice = input("Enter an option: ")
