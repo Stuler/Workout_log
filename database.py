@@ -46,14 +46,11 @@ class Database():
         print("Workout data inserted successfully into database")
         return self.cur_wkout.lastrowid
 
-    def insert_excr(self,wkout_id, exc_name, exc_load, reps_no, serie_rpe, rest, 
-                            note ):
+    def insert_excr(self,excercises_list):
         insert_record = '''INSERT INTO excr_lst
                             (wkoutId, exc_name, exc_load, reps_no, serie_rpe, 
                             rest, note)
                             VALUES (?,?,?,?,?,?,?);'''
-        excercises_list = (wkout_id,exc_name, exc_load, reps_no, 
-                            serie_rpe, rest, note)
         self.cur_excr.execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")

@@ -1,5 +1,4 @@
 import sys
-from backend import WorkoutLog
 from database import Database
 
 # TO SOLVE: cursors are recreated each time a workout is added?
