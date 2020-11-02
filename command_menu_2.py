@@ -53,14 +53,17 @@ class Menu:
     def show_workouts(self):
         pass
 
+    def getWkoutData(self):
+        self.wkoutDate = input("Workout date (DD/MM/YYYY): ")
+        self.sport = input("Sport: ")
+        self.wkoutHdr = input("Workout name: ")
+        self.wkoutDsc = input("Description of a workout: ")
+        self.data = (self.wkoutDate, self.sport, self.wkoutHdr, self.wkoutDsc) 
+        return(self.data)
+
     def add_wkout(self):
-        wkoutDate = input("Workout date (DD/MM/YYYY): ")
-        sport = input("Sport: ")
-        wkoutHeader = input("Workout name: ")
-        wkoutDesc = input("Description of a workout: ")
-        data = (wkoutDate, sport, wkoutHeader, wkoutDesc) 
-        wID = DBase().database.insert_wkout(data)
-        print (wID)
+        self.wkOut = DBase().database.insert_wkout(self.getWkoutData())
+        print (self.wkOut)
         self.add_excr_run()
 
     def modify_workout(self):
@@ -97,16 +100,17 @@ class Menu:
         for excercise in self.excs:
             print (excercise)
 
+    def getExcrData(self):
+        self.wID = Menu().add_wkout().wkOut
+        self.excercise_name = input("Excercise: ")
+        self.excercise_load = input("Excercise load: ")
+        self.reps_done = input("Repeats done: ")
+        self.serie_rpe = input("RPE of an effort: ")
+        self.rest_int = input("Length of rest interval: ")
+        self.note = input("Additional note: ")
+
     def add_excr(self):
-        wID = Menu().add_wkout().wID
-        excercise_name = input("Excercise: ")
-        excercise_load = input("Excercise load: ")
-        reps_done = input("Repeats done: ")
-        serie_rpe = input("RPE of an effort: ")
-        rest_int = input("Length of rest interval: ")
-        note = input("Additional note: ")
-        DBase().database.insert_excr(wID, excercise_name, excercise_load, reps_done, 
-                                    serie_rpe, rest_int, note)
+        DBase().database.insert_excr(self.getExcrData())
       
     def add_excr_menu(self):
         self.excr_menu_choices = {
