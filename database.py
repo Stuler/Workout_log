@@ -9,11 +9,11 @@ class Database():
 
     def wkoutCur(self):
         self.cur_wkout = self.conn.cursor()
-        return (self.cur_wkout)
+        return self.cur_wkout
 
     def excrCur(self):
         self.cur_excr = self.conn.cursor()
-        return (self.cur_excr)
+        return self.cur_excr
     
     def create_tables(self):
         create_wkout_table =    ('''CREATE TABLE IF NOT EXISTS wkout_lst(
@@ -59,10 +59,6 @@ class Database():
         self.excrCur().execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
-
-    def get_wkout_id(self):
-        self.wkout_id = self.cur_wkout.lastrowid
-        return(self.wkout_id)
 
     def show_excr(self):
         show_excr_query = '''SELECT * from excr_lst'''

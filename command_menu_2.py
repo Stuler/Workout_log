@@ -65,6 +65,7 @@ class Menu:
         print (self.wkOut)
         self.add_excr_run()
 
+
     def modify_workout(self):
         pass
 
@@ -100,13 +101,16 @@ class Menu:
             print (excercise)
 
     def getExcrData(self):
-        self.wID = Menu().add_wkout().wkOut
-        self.excercise_name = input("Excercise: ")
-        self.excercise_load = input("Excercise load: ")
+        self.wID = self.wkOut
+        self.excr_name = input("Excercise: ")
+        self.excr_load = input("Excercise load: ")
         self.reps_done = input("Repeats done: ")
         self.serie_rpe = input("RPE of an effort: ")
         self.rest_int = input("Length of rest interval: ")
         self.note = input("Additional note: ")
+        self.data = (self.wID, self.excr_name, self.excr_load, self.reps_done,
+                    self.serie_rpe, self.rest_int, self.note)
+        return(self.data)
 
     def add_excr(self):
         DBase().database.insert_excr(self.getExcrData())
