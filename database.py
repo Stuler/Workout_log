@@ -5,11 +5,15 @@ class Database():
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
         self.conn.execute("PRAGMA foreign_keys = ON")
+        print("Successfully connected to SQLite")
 
+    def get_wk_cursor(self):
         self.cur_wkout = self.conn.cursor()
+
+    def get_ex_cursor(self):
         self.cur_excr = self.conn.cursor()
     
-    def create_tables(self):
+    def create_wk_tbl(self):
         create_wkout_table =    ('''CREATE TABLE IF NOT EXISTS wkout_lst(
                                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                 wkout_date TEXT NOT NULL,
@@ -17,21 +21,22 @@ class Database():
                                 wkout_header TEXT,
                                 wkout_desc TEXT
                                 );''')
+        self.cur_wkout.execute(create_wkout_table)
+        self.conn.commit()
+        print("SQLite table created")
         
+    def create_exc_tbl(self):    
         create_excr_table =     ('''CREATE TABLE IF NOT EXISTS excr_lst(
                                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                wkoutId INTEGER NOT NULL,
                                 exc_name TEXT NOT NULL,
                                 exc_load REAL NOT NULL,
                                 reps_no INTEGER NOT NULL,
                                 serie_rpe INTEGER,
                                 rest REAL,
                                 note TEXT,
-                                wkoutId INTEGER NOT NULL,
                                 FOREIGN KEY (wkoutId) REFERENCES wkout_lst (id)
                                 );''')
-        
-        print("Successfully connected to SQLite")
-        self.cur_wkout.execute(create_wkout_table)
         self.cur_excr.execute(create_excr_table)
         self.conn.commit()
         print("SQLite table created")
