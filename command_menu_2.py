@@ -21,7 +21,7 @@ class Menu:
             "5": self.quit
         }
 
-        self.wkout_choices = {
+        self.add_wkout_choices = {
             "1": self.show_excr,
             "2": self.add_excr,
             "3": self.modify_excr,
@@ -86,7 +86,7 @@ class Menu:
         while True:
             self.add_wkout_menu_display()
             choice = input("Enter an option: ")
-            action = self.wkout_choices.get(choice)
+            action = self.add_wkout_choices.get(choice)
             if action:
                 action()
             else:
