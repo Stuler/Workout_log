@@ -60,6 +60,13 @@ class Database():
         wkouts = self.cur_wkout.fetchall()
         return wkouts
 
+    def show_last_wkouts(self, wkOutCount):
+        show_wkout_query = '''SELECT * from wkout_lst'''
+        self.cur_wkout.execute(show_wkout_query)
+        wkouts = self.cur_wkout.fetchmany(wkOutCount)
+        print(f"Your last {self.wkOutCount} workouts: \n")
+        return wkouts
+
     def show_wkout_details(self):
         pass
 

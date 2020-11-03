@@ -85,18 +85,6 @@ class Menu:
                 Note: {wkout[4]}
                 ''')
 
-    def show_last_wkouts(self):
-        pass
-
-    def show_wkout(self):
-        pass
-
-    def modify_last_wkout(self):
-        pass
-
-    def modify_wkout(self):
-        pass
-
     def getWkoutData(self):
         self.wkoutDate = input("Workout date (DD/MM/YYYY): ")
         self.sport = input("Sport: ")
@@ -110,8 +98,25 @@ class Menu:
         print (self.wkOut)
         self.add_excr_run()
 
+    def show_last_wkouts(self,wkCount):
+        self.last_wkouts = DBase().database.show_last_wkouts()
+        wkCount = 5
+        for wkout in self.last_wkouts:
+                        print(f'''
+        Workout ID: {wkout[0]}  
+                Date: {wkout[1]}    
+                Sport: {wkout[2]}
+                Name: {wkout[3]}    
+                Note: {wkout[4]}
+                ''')
 
-    def modify_workout(self):
+    def show_wkout(self):
+        pass
+
+    def modify_last_wkout(self):
+        pass
+
+    def modify_wkout(self):
         pass
 
     def delete_workout(self):
