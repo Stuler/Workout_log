@@ -6,14 +6,8 @@ class Database():
         self.conn = sqlite3.connect(db)
         self.conn.execute("PRAGMA foreign_keys = ON")
         print("Successfully connected to SQLite")
-
-    def wkoutCur(self):
         self.cur_wkout = self.conn.cursor()
-        return self.cur_wkout
-
-    def excrCur(self):
         self.cur_excr = self.conn.cursor()
-        return self.cur_excr
     
     def create_tables(self):
         create_wkout_table =    ('''CREATE TABLE IF NOT EXISTS wkout_lst(
@@ -23,7 +17,7 @@ class Database():
                                 wkout_header TEXT,
                                 wkout_desc TEXT
                                 );''')
-        self.wkoutCur().execute(create_wkout_table)
+        self.cur_wkout.execute(create_wkout_table)
         self.conn.commit()
         print("Workout table created")
         
@@ -38,7 +32,7 @@ class Database():
                                 note TEXT,
                                 FOREIGN KEY (wkoutId) REFERENCES wkout_lst (id)
                                 );''')
-        self.excrCur().execute(create_excr_table)
+        self.cur_excr.execute(create_excr_table)
         self.conn.commit()
         print("Excercise table created")
 
@@ -46,7 +40,7 @@ class Database():
         insert_record = '''INSERT INTO wkout_lst
                             (wkout_date, sport, wkout_header, wkout_desc)
                             VALUES (?,?,?,?);'''
-        self.wkoutCur().execute(insert_record, wkout_data)
+        self.cur_wkout.execute(insert_record, wkout_data)
         self.conn.commit()
         print("Workout data inserted successfully into database")
         return self.cur_wkout.lastrowid
@@ -56,7 +50,7 @@ class Database():
                             (wkoutId, exc_name, exc_load, reps_no, serie_rpe, 
                             rest, note)
                             VALUES (?,?,?,?,?,?,?);'''
-        self.excrCur().execute(insert_record, excercises_list)
+        self.cur_excr.execute(insert_record, excercises_list)
         self.conn.commit()
         print("Excercise data inserted successfully into database")
 

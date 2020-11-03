@@ -1,10 +1,6 @@
 import sys
 from database import Database
 
-# TO SOLVE: cursors are recreated each time a workout is added?
-# in database.py, get_wkout_id is working, but when called from command_menu,
-# cursors are reset
-
 class DBase:
     def __init__(self):
         self.database = Database("workout_log.db")
