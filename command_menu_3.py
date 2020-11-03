@@ -1,7 +1,8 @@
 import sys
 from database import Database
 
-# TODO: add update functionality on database
+# TODO: add UPDATE functionality on database
+# TODO: add SELECT functionality on database
 
 class DBase:
     def __init__(self):
