@@ -27,6 +27,14 @@ class Menu:
             "5": self.save_wkout
         }
 
+        self.modify_wkout_choices = {
+            "1": self.show_workouts,
+            "2": self.show_last_wkouts,
+            "3": self.modify_last_wkout,
+            "4": self.modify_wkout,
+            "5": self.display_menu
+        }
+
     def display_menu(self):
         print('''
         Workout Log Menu:
@@ -38,13 +46,22 @@ class Menu:
         5. Quit 
         ''')
     
-    def add_wkout_menu_display(self):
+    def add_wkout_menu(self):
         print('''
             1. Show excercises
             2. Add new excercise
             3. Modify excercise
             4. Delete excercise
             5. Save and finish workout
+        ''')
+
+    def modify_wkout_menu(self):
+        print('''
+            1. Show all workouts
+            2. Show last workouts
+            3. Modify last workout
+            4. Modify particular workout
+            5. Back to main menu
         ''')
 
     def run(self):
@@ -93,10 +110,9 @@ class Menu:
         print("Quitting program")
         sys.exit(0)
 
-
     def add_excr_run(self):
         while True:
-            self.add_wkout_menu_display()
+            self.add_wkout_menu()
             choice = input("Enter an option: ")
             action = self.add_wkout_choices.get(choice)
             if action:
