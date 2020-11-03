@@ -77,13 +77,24 @@ class Menu:
     def show_workouts(self):
         self.wkouts = DBase().database.show_wkouts()
         for wkout in self.wkouts:
-            print(f'''ID: {wkout[0]}  
-                    Date: {wkout[1]}    
-                    Sport: {wkout[2]}
-                    Name: {wkout[3]}    
-                    Note: {wkout[4]}''')
+            print(f'''
+        Workout ID: {wkout[0]}  
+                Date: {wkout[1]}    
+                Sport: {wkout[2]}
+                Name: {wkout[3]}    
+                Note: {wkout[4]}
+                ''')
+
+    def show_last_wkouts(self):
+        pass
 
     def show_wkout(self):
+        pass
+
+    def modify_last_wkout(self):
+        pass
+
+    def modify_wkout(self):
         pass
 
     def getWkoutData(self):
