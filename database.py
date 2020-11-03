@@ -54,6 +54,15 @@ class Database():
         self.conn.commit()
         print("Excercise data inserted successfully into database")
 
+    def show_wkouts(self):
+        show_wkout_query = '''SELECT * from wkout_lst'''
+        self.cur_wkout.execute(show_wkout_query)
+        wkouts = self.cur_wkout.fetchall()
+        return wkouts
+
+    def show_wkout_details(self):
+        pass
+
     def show_excr(self):
         show_excr_query = '''SELECT * from excr_lst'''
         self.cur_excr.execute(show_excr_query)

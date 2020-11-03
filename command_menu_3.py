@@ -37,6 +37,15 @@ class Menu:
         4. Remove workout
         5. Quit 
         ''')
+    
+    def add_wkout_menu_display(self):
+        print('''
+            1. Show excercises
+            2. Add new excercise
+            3. Modify excercise
+            4. Delete excercise
+            5. Save and finish workout
+        ''')
 
     def run(self):
         while True:
@@ -49,6 +58,15 @@ class Menu:
                 print(f"{choice} is not a valid choice.")
 
     def show_workouts(self):
+        self.wkouts = DBase().database.show_wkouts()
+        for wkout in self.wkouts:
+            print(f'''ID: {wkout[0]}  
+                    Date: {wkout[1]}    
+                    Sport: {wkout[2]}
+                    Name: {wkout[3]}    
+                    Note: {wkout[4]}''')
+
+    def show_wkout(self):
         pass
 
     def getWkoutData(self):
@@ -75,14 +93,6 @@ class Menu:
         print("Quitting program")
         sys.exit(0)
 
-    def add_wkout_menu_display(self):
-        print('''
-            1. Show excercises
-            2. Add new excercise
-            3. Modify excercise
-            4. Delete excercise
-            5. Save and finish workout
-        ''')
 
     def add_excr_run(self):
         while True:
