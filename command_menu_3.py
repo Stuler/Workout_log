@@ -46,7 +46,7 @@ class Menu:
         print('''
         Workout Log Menu:
         
-        1. Show all workouts
+        1. Show workouts
         2. Add new workout
         3. Modify workout
         4. Remove workout
@@ -103,39 +103,21 @@ class Menu:
 
     def show_wkouts(self):
         self.wkouts = DBase().database.show_wkouts()
-        for wkout in self.wkouts:
-            print(f'''
-        Workout ID: {wkout[0]}  
-                Date: {wkout[1]}    
-                Sport: {wkout[2]}
-                Name: {wkout[3]}    
-                Note: {wkout[4]}
-                ''')
+        for self.wkOut in self.wkouts:
+            self.print_wkOut(self.wkOut)
 
     def show_last_wkouts(self):
         self.wkCount = int(input("Number of workouts to show: "))
         self.last_wkouts = DBase().database.show_last_wkouts(self.wkCount)
         print(f"Your last {self.wkCount} workouts: \n")
-        for wkout in self.last_wkouts:
-                        print(f'''
-        Workout ID: {wkout[0]}  
-                Date: {wkout[1]}    
-                Sport: {wkout[2]}
-                Name: {wkout[3]}    
-                Note: {wkout[4]}
-                ''')
+        for self.last_wkout in self.last_wkouts:
+            self.print_wkOut(self.last_wkout)
 
     def show_wkout(self):
         try:
             self.wkOut_ID = int(input("Workout ID: "))
             self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
-            print(f'''
-            Workout ID: {self.wkOut[0]}  
-                    Date: {self.wkOut[1]}    
-                    Sport: {self.wkOut[2]}
-                    Name: {self.wkOut[3]}    
-                    Note: {self.wkOut[4]}
-                    ''')
+            self.print_wkOut(self.wkOut)
         except TypeError:
             print("Non-existing ID!")     
 
@@ -212,6 +194,15 @@ class Menu:
 
     def rtrn(self):
         Menu().run()
+
+    def print_wkOut(self, wkOut):
+        print(f'''
+            Workout ID: {self.wkOut[0]}  
+                    Date: {self.wkOut[1]}    
+                    Sport: {self.wkOut[2]}
+                    Name: {self.wkOut[3]}    
+                    Note: {self.wkOut[4]}
+                    ''')
 
 if __name__ == "__main__":
     Menu().run()
