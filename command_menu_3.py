@@ -90,6 +90,8 @@ class Menu:
             else:
                 print(f"{choice} is not a valid choice.")
 
+# Show workouts functionality
+
     def show_wkouts(self):
         self.wkouts = DBase().database.show_wkouts()
         for wkout in self.wkouts:
@@ -100,19 +102,6 @@ class Menu:
                 Name: {wkout[3]}    
                 Note: {wkout[4]}
                 ''')
-
-    def getWkoutData(self):
-        self.wkoutDate = input("Workout date (DD/MM/YYYY): ")
-        self.sport = input("Sport: ")
-        self.wkoutHdr = input("Workout name: ")
-        self.wkoutDsc = input("Description of a workout: ")
-        self.data = (self.wkoutDate, self.sport, self.wkoutHdr, self.wkoutDsc) 
-        return(self.data)
-
-    def add_wkout(self):
-        self.wkOut = DBase().database.insert_wkout(self.getWkoutData())
-        print (self.wkOut)
-        self.add_excr_run()
 
     def show_last_wkouts(self,wkCount):
         self.wkCount = 5
@@ -129,18 +118,57 @@ class Menu:
     def show_wkout(self):
         pass
 
+    def show_excr(self):
+        self.excs = self.database.show_excr()
+        for excercise in self.excs:
+            print (excercise)
+
+# Add workout functionality
+
+    def add_wkout(self):
+        self.wkOut = DBase().database.insert_wkout(self.getWkoutData())
+        print (self.wkOut)
+        self.add_excr_run()
+
+    def getWkoutData(self):
+        self.wkoutDate = input("Workout date (DD/MM/YYYY): ")
+        self.sport = input("Sport: ")
+        self.wkoutHdr = input("Workout name: ")
+        self.wkoutDsc = input("Description of a workout: ")
+        self.data = (self.wkoutDate, self.sport, self.wkoutHdr, self.wkoutDsc) 
+        return(self.data)
+
+# Modify workout functionality
+
     def modify_last_wkout(self):
         pass
 
     def modify_wkout(self):
         pass
 
+# Delete functionality
+
     def delete_wkout(self):
         pass
+
+# Quit
 
     def quit(self):
         print("Quitting program")
         sys.exit(0)
+
+# Add excercise functionality
+
+    def add_excr_menu(self):
+        self.excr_menu_choices = {
+            "1": self.add_excr,
+            "2": self.save_wkout
+        }
+ 
+    def add_excr_menu_display(self):
+        print('''Excercise has been added to the workout!
+                        1. Add another excercise
+                        2. Save workout and return to the menu ''')
 
     def add_excr_run(self):
         while True:
@@ -151,11 +179,6 @@ class Menu:
                 action()
             else:
                 print(f"{choice} is not a valid choice.")
-
-    def show_excr(self):
-        self.excs = self.database.show_excr()
-        for excercise in self.excs:
-            print (excercise)
 
     def getExcrData(self):
         self.wID = self.wkOut
@@ -172,17 +195,6 @@ class Menu:
     def add_excr(self):
         DBase().database.insert_excr(self.getExcrData())
       
-    def add_excr_menu(self):
-        self.excr_menu_choices = {
-            "1": self.add_excr,
-            "2": self.save_wkout
-        }
- 
-    def add_excr_menu_display(self):
-        print('''Excercise has been added to the workout!
-                        1. Add another excercise
-                        2. Save workout and return to the menu ''')
-
     def modify_excr(self):
         pass
 
