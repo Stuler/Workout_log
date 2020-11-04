@@ -64,11 +64,13 @@ class Database():
         show_wkout_query = '''SELECT * from wkout_lst'''
         self.cur_wkout.execute(show_wkout_query)
         wkouts = self.cur_wkout.fetchmany(wkOutCount)
-        print(f"Your last {wkOutCount} workouts: \n")
         return wkouts
 
-    def show_wkout_details(self):
-        pass
+    def show_wkout(self, wkoutID):
+        show_wkout_query = '''SELECT * from wkout_lst where id = ?'''
+        self.cur_wkout.execute(show_wkout_query, (wkoutID, ))
+        wkouts = self.cur_wkout.fetchone()
+        return wkouts
 
     def show_excr(self):
         show_excr_query = '''SELECT * from excr_lst'''

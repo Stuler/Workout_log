@@ -57,7 +57,7 @@ class Menu:
         print('''
             1. Show all workouts
             2. Show last X workouts
-            3. Show particular workout
+            3. Show workout details
             4. Back
         ''')
     
@@ -115,6 +115,7 @@ class Menu:
     def show_last_wkouts(self):
         self.wkCount = int(input("Number of workouts to show: "))
         self.last_wkouts = DBase().database.show_last_wkouts(self.wkCount)
+        print(f"Your last {self.wkCount} workouts: \n")
         for wkout in self.last_wkouts:
                         print(f'''
         Workout ID: {wkout[0]}  
@@ -125,7 +126,15 @@ class Menu:
                 ''')
 
     def show_wkout(self):
-        pass
+        self.wkOut_ID = int(input("Workout ID: "))
+        self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
+        print(f'''
+        Workout ID: {self.wkOut[0]}  
+                Date: {self.wkOut[1]}    
+                Sport: {self.wkOut[2]}
+                Name: {self.wkOut[3]}    
+                Note: {self.wkOut[4]}
+                ''')
 
     def show_excr(self):
         self.excs = self.database.show_excr()
