@@ -19,6 +19,14 @@ class Menu:
             "5": self.quit
         }
 
+        self.show_wkouts_choices = {
+            "1": self.show_wkouts,
+            "2": self.show_last_wkouts,
+            "3": self.show_wkout,
+            "4": self.delete_excr,
+            "5": self.display_menu
+        }
+
         self.add_wkout_choices = {
             "1": self.show_excr,
             "2": self.add_excr,
@@ -44,6 +52,14 @@ class Menu:
         3. Modify workout
         4. Remove workout
         5. Quit 
+        ''')
+
+    def show_wkouts_menu(self):
+        print('''
+            1. Show all workouts
+            2. Show last X workouts
+            3. Show particular workout
+            4. Back
         ''')
     
     def add_wkout_menu(self):
