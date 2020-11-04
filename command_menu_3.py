@@ -126,15 +126,18 @@ class Menu:
                 ''')
 
     def show_wkout(self):
-        self.wkOut_ID = int(input("Workout ID: "))
-        self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
-        print(f'''
-        Workout ID: {self.wkOut[0]}  
-                Date: {self.wkOut[1]}    
-                Sport: {self.wkOut[2]}
-                Name: {self.wkOut[3]}    
-                Note: {self.wkOut[4]}
-                ''')
+        try:
+            self.wkOut_ID = int(input("Workout ID: "))
+            self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
+            print(f'''
+            Workout ID: {self.wkOut[0]}  
+                    Date: {self.wkOut[1]}    
+                    Sport: {self.wkOut[2]}
+                    Name: {self.wkOut[3]}    
+                    Note: {self.wkOut[4]}
+                    ''')
+        except TypeError:
+            print("Non-existing ID!")     
 
     def show_excr(self):
         self.excs = self.database.show_excr()
