@@ -90,7 +90,7 @@ class Menu:
             else:
                 print(f"{choice} is not a valid choice.")
 
-# Show workouts functionality
+# Show functionality
 
     def show_wkouts(self):
         self.wkouts = DBase().database.show_wkouts()
@@ -158,17 +158,6 @@ class Menu:
         sys.exit(0)
 
 # Add excercise functionality
-
-    def add_excr_menu(self):
-        self.excr_menu_choices = {
-            "1": self.add_excr,
-            "2": self.save_wkout
-        }
- 
-    def add_excr_menu_display(self):
-        print('''Excercise has been added to the workout!
-                        1. Add another excercise
-                        2. Save workout and return to the menu ''')
 
     def add_excr_run(self):
         while True:
