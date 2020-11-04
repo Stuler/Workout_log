@@ -12,10 +12,10 @@ class DBase:
 class Menu:
     def __init__(self):
         self.main_choices = {
-            "1": self.show_workouts,
+            "1": self.show_wkouts,
             "2": self.add_wkout,
-            "3": self.modify_workout,
-            "4": self.delete_workout,
+            "3": self.modify_wkout,
+            "4": self.delete_wkout,
             "5": self.quit
         }
 
@@ -28,7 +28,7 @@ class Menu:
         }
 
         self.modify_wkout_choices = {
-            "1": self.show_workouts,
+            "1": self.show_wkouts,
             "2": self.show_last_wkouts,
             "3": self.modify_last_wkout,
             "4": self.modify_wkout,
@@ -74,7 +74,7 @@ class Menu:
             else:
                 print(f"{choice} is not a valid choice.")
 
-    def show_workouts(self):
+    def show_wkouts(self):
         self.wkouts = DBase().database.show_wkouts()
         for wkout in self.wkouts:
             print(f'''
@@ -99,8 +99,8 @@ class Menu:
         self.add_excr_run()
 
     def show_last_wkouts(self,wkCount):
+        self.wkCount = 5
         self.last_wkouts = DBase().database.show_last_wkouts()
-        wkCount = 5
         for wkout in self.last_wkouts:
                         print(f'''
         Workout ID: {wkout[0]}  
@@ -119,7 +119,7 @@ class Menu:
     def modify_wkout(self):
         pass
 
-    def delete_workout(self):
+    def delete_wkout(self):
         pass
 
     def quit(self):
