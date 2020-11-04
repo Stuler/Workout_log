@@ -64,7 +64,7 @@ class Database():
         show_wkout_query = '''SELECT * from wkout_lst'''
         self.cur_wkout.execute(show_wkout_query)
         wkouts = self.cur_wkout.fetchmany(wkOutCount)
-        print(f"Your last {self.wkOutCount} workouts: \n")
+        print(f"Your last {wkOutCount} workouts: \n")
         return wkouts
 
     def show_wkout_details(self):
