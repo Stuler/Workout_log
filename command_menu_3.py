@@ -21,7 +21,7 @@ class Menu:
 
         self.show_wkouts_choices = {
             "1": self.show_wkouts,
-            "2": self.show_last_wkouts,
+            "2": self.search_wkout,
             "3": self.show_wkout,
             "4": self.rtrn
         }
@@ -36,7 +36,7 @@ class Menu:
 
         self.modify_wkout_choices = {
             "1": self.show_wkouts,
-            "2": self.show_last_wkouts,
+            "2": self.search_wkout,
             "3": self.modify_last_wkout,
             "4": self.modify_wkout,
             "5": self.rtrn
@@ -56,7 +56,7 @@ class Menu:
     def show_wkouts_menu(self):
         print('''
             1. Show all workouts
-            2. Show last X workouts
+            2. Search workout
             3. Show workout details
             4. Back
         ''')
@@ -78,6 +78,8 @@ class Menu:
             4. Modify particular workout
             5. Back
         ''')
+
+# Run the program
 
     def run(self):
         while True:
@@ -106,18 +108,15 @@ class Menu:
         for self.wkOut in self.wkouts:
             self.print_wkOut(self.wkOut)
 
-    def show_last_wkouts(self):
-        self.wkCount = int(input("Number of workouts to show: "))
-        self.last_wkouts = DBase().database.show_last_wkouts(self.wkCount)
-        print(f"Your last {self.wkCount} workouts: \n")
-        for self.last_wkout in self.last_wkouts:
-            self.print_wkOut(self.last_wkout)
-
     def show_wkout(self):
         try:
             self.wkOut_ID = int(input("Workout ID: "))
             self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
+            self.excrs = DBase().database.show_excr(self.wkOut_ID)
             self.print_wkOut(self.wkOut)
+            for excr in self.excrs:
+                print(excr)
+
         except TypeError:
             print("Non-existing ID!")     
 
@@ -125,6 +124,11 @@ class Menu:
         self.excs = self.database.show_excr()
         for excercise in self.excs:
             print (excercise)
+
+# Search workout
+
+    def search_wkout(self):
+        pass
 
 # Add workout functionality
 
@@ -195,6 +199,8 @@ class Menu:
     def rtrn(self):
         Menu().run()
 
+# Print out functions
+
     def print_wkOut(self, wkOut):
         print(f'''
             Workout ID: {self.wkOut[0]}  
@@ -204,5 +210,14 @@ class Menu:
                     Note: {self.wkOut[4]}
                     ''')
 
+    def print_excrs(self, excrs):
+        print(f'''
+            Workout ID: {self.wkOut[0]}  
+                    Date: {self.wkOut[1]}    
+                    Sport: {self.wkOut[2]}
+                    Name: {self.wkOut[3]}    
+                    Note: {self.wkOut[4]}
+                    ''')
+    
 if __name__ == "__main__":
     Menu().run()

@@ -66,17 +66,17 @@ class Database():
         wkouts = self.cur_wkout.fetchmany(wkOutCount)
         return wkouts
 
-    def show_wkout(self, wkoutID):
+    def show_wkout(self, id):
         show_wkout_query = '''SELECT * from wkout_lst where id = ?'''
-        self.cur_wkout.execute(show_wkout_query, (wkoutID, ))
+        self.cur_wkout.execute(show_wkout_query, (id, ))
         wkouts = self.cur_wkout.fetchone()
         return wkouts
 
-    def show_excr(self):
-        show_excr_query = '''SELECT * from excr_lst'''
-        self.cur_excr.execute(show_excr_query)
-        excercises = self.cur_excr.fetchall()
-        return excercises
+    def show_excr(self, id):
+        show_excr_query = '''SELECT * from excr_lst where wkoutId = ?'''
+        self.cur_excr.execute(show_excr_query, (id,))
+        excrs = self.cur_excr.fetchall()
+        return excrs
 
     def show_added_excr(self, excr_id):
         show_added_query = '''SELECT * from excr_lst'''
