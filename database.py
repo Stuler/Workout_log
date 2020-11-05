@@ -72,9 +72,9 @@ class Database():
         wkouts = self.cur_wkout.fetchone()
         return wkouts
 
-    def show_excr(self, id):
+    def show_excr(self, wkoutId):
         show_excr_query = '''SELECT * from excr_lst where wkoutId = ?'''
-        self.cur_excr.execute(show_excr_query, (id,))
+        self.cur_excr.execute(show_excr_query, (wkoutId,))
         excrs = self.cur_excr.fetchall()
         return excrs
 

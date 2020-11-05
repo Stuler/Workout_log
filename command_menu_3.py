@@ -114,11 +114,10 @@ class Menu:
             self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
             self.excrs = DBase().database.show_excr(self.wkOut_ID)
             self.print_wkOut(self.wkOut)
-            for excr in self.excrs:
-                print(excr)
-
+            self.print_excrs(self.excrs)
         except TypeError:
-            print("Non-existing ID!")     
+            print("Non-existing ID!")
+            print(self.wkOut_ID)     
 
     def show_excr(self):
         self.excs = self.database.show_excr()
@@ -203,21 +202,25 @@ class Menu:
 
     def print_wkOut(self, wkOut):
         print(f'''
-            Workout ID: {self.wkOut[0]}  
-                    Date: {self.wkOut[1]}    
-                    Sport: {self.wkOut[2]}
-                    Name: {self.wkOut[3]}    
-                    Note: {self.wkOut[4]}
+            Workout ID:     {self.wkOut[0]}  
+                    Date:   {self.wkOut[1]}    
+                    Sport:  {self.wkOut[2]}
+                    Name:   {self.wkOut[3]}    
+                    Note:   {self.wkOut[4]}
                     ''')
 
     def print_excrs(self, excrs):
-        print(f'''
-            Workout ID: {self.wkOut[0]}  
-                    Date: {self.wkOut[1]}    
-                    Sport: {self.wkOut[2]}
-                    Name: {self.wkOut[3]}    
-                    Note: {self.wkOut[4]}
-                    ''')
+        for (id, wid, name, load, reps, rpe, ri, note) in self.excrs:
+            print(id, wid, name, load, reps, rpe, ri, note)
+    #            print(f'''
+    #                Exc no.: {excr[0]}  
+    #                        Exc. name:          {excr[1]}    
+    #                        Load:               {excr[2]}
+    #                        Number of reps:     {excr[3]}    
+    #                        RPE:                {excr[4]}
+    #                        Rest interval:      {excr[5]}
+    #                        Additional note:    {excr[6]}
+    #                    ''')
     
 if __name__ == "__main__":
     Menu().run()
