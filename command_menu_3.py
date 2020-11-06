@@ -210,17 +210,18 @@ class Menu:
                     ''')
 
     def print_excrs(self, excrs):
-        for (id, wid, name, load, reps, rpe, ri, note) in self.excrs:
-            print(id, wid, name, load, reps, rpe, ri, note)
-    #            print(f'''
-    #                Exc no.: {excr[0]}  
-    #                        Exc. name:          {excr[1]}    
-    #                        Load:               {excr[2]}
-    #                        Number of reps:     {excr[3]}    
-    #                        RPE:                {excr[4]}
-    #                        Rest interval:      {excr[5]}
-    #                        Additional note:    {excr[6]}
-    #                    ''')
+        #for (id, wid, name, load, reps, rpe, ri, note) in self.excrs:
+        self.exc_lst = list(enumerate(self.excrs, start=1))
+        for i in self.exc_lst:
+            print(f'''
+            Exc no.: {i[0]}
+                        Exc. name:          {i[1][2]}    
+                        Load:               {i[1][3]}
+                        Number of reps:     {i[1][4]}    
+                        RPE:                {i[1][5]}
+                        Rest interval:      {i[1][6]}
+                        Additional note:    {i[1][7]}
+                ''')
     
 if __name__ == "__main__":
     Menu().run()
