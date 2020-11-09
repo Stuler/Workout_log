@@ -72,6 +72,21 @@ class Database():
         wkouts = self.cur_wkout.fetchone()
         return wkouts
 
+    def search_wkout(self, 
+                id="", wkout_date="", sport="", wkout_header="", wkout_desc=""):
+        search_query = '''SELECT * from wkout_lst WHERE 
+                                    id=? OR
+                                    wkout_date=? OR
+                                    sport=? OR
+                                    wkout_header=? OR
+                                    wkout_desc=?
+                                    '''
+        self.cur_wkout.execute(search_query, 
+                            (wkout_date, sport, wkout_header, wkout_desc))
+        searched_wkout = self.cur_wkout.fetchall()
+        return searched_wkout
+
+
     def show_excr(self, wkoutId):
         show_excr_query = '''SELECT * from excr_lst where wkoutId = ?'''
         self.cur_excr.execute(show_excr_query, (wkoutId,))

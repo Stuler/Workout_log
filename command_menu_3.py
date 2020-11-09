@@ -127,7 +127,8 @@ class Menu:
 # Search workout
 
     def search_wkout(self):
-        pass
+        get_id = input("Select ID to find: ")
+        self.wkouts = self.database.search_wkout(get_id)
 
 # Add workout functionality
 
