@@ -172,11 +172,17 @@ class Menu:
 
     def search_wkout(self):
         self.wkout_ID = input("Enter searched ID: ")
-        self.wkout_DATE = ""
-        self.wkout_SPORT = ""
-        self.wkout_HDR = ""
-        self.wkout = ""
-        self.wkouts = DBase().database.search_wkout(self.wkout_ID)
+        self.wkout_DATE = input("Enter date of a workout: ")
+        self.wkout_SPORT = input("Enter searched sport: ")
+        self.wkout_HDR = input("Enter workout header: ")
+        self.wkout_DSC = input("Enter workout description: ")
+        self.wkouts = DBase().database.search_wkout(
+                                                    self.wkout_ID,
+                                                    self.wkout_DATE,
+                                                    self.wkout_SPORT,
+                                                    self.wkout_HDR,
+                                                    self.wkout_DSC        
+                                                    )
         print (self.wkouts)
 
 # Add workout functionality
