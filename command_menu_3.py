@@ -44,11 +44,11 @@ class Menu:
         }
 
         self.search_wkout_choices = {
-            "1": self.search_wkout_ID,
-            "2": self.search_wkout_DATE,
-            "3": self.search_wkout_SPORT,
-            "4": self.search_wkout_HDR,
-            "5": self.search_wkout_DSC,
+            "1": self.get_wkout_ID,
+            "2": self.get_wkout_DATE,
+            "3": self.get_wkout_SPORT,
+            "4": self.get_wkout_HDR,
+            "5": self.get_wkout_DSC,
             "6": self.rtrn
         }
 
@@ -155,24 +155,29 @@ class Menu:
             else:
                 print(f"{choice} is not a valid choice.")
 
-    def search_wkout_ID(self):
+    def get_wkout_ID(self):
         pass
 
-    def search_wkout_DATE(self):
+    def get_wkout_DATE(self):
         pass
 
-    def search_wkout_SPORT(self):
+    def get_wkout_SPORT(self):
         pass
 
-    def search_wkout_HDR(self):
+    def get_wkout_HDR(self):
         pass
 
-    def search_wkout_DSC(self):
+    def get_wkout_DSC(self):
         pass
 
     def search_wkout(self):
-        get_id = input("Select ID to find: ")
-        self.wkouts = self.database.search_wkout(get_id)
+        self.wkout_ID = input("Enter searched ID: ")
+        self.wkout_DATE = ""
+        self.wkout_SPORT = ""
+        self.wkout_HDR = ""
+        self.wkout = ""
+        self.wkouts = DBase().database.search_wkout(self.wkout_ID)
+        print (self.wkouts)
 
 # Add workout functionality
 

@@ -73,7 +73,8 @@ class Database():
         return wkouts
 
     def search_wkout(self, 
-                id="", wkout_date="", sport="", wkout_header="", wkout_desc=""):
+                wkout_id="", wkout_date="", sport="", 
+                wkout_header="", wkout_desc=""):
         search_query = '''SELECT * from wkout_lst WHERE 
                                     id=? OR
                                     wkout_date=? OR
@@ -82,7 +83,8 @@ class Database():
                                     wkout_desc=?
                                     '''
         self.cur_wkout.execute(search_query, 
-                            (wkout_date, sport, wkout_header, wkout_desc))
+                            (wkout_id, wkout_date, sport, wkout_header,
+                            wkout_desc))
         searched_wkouts = self.cur_wkout.fetchall()
         return searched_wkouts
 
