@@ -83,9 +83,8 @@ class Database():
                                     '''
         self.cur_wkout.execute(search_query, 
                             (wkout_date, sport, wkout_header, wkout_desc))
-        searched_wkout = self.cur_wkout.fetchall()
-        return searched_wkout
-
+        searched_wkouts = self.cur_wkout.fetchall()
+        return searched_wkouts
 
     def show_excr(self, wkoutId):
         show_excr_query = '''SELECT * from excr_lst where wkoutId = ?'''

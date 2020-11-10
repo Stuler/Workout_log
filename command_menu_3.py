@@ -3,6 +3,7 @@ from database import Database
 
 # TODO: add UPDATE functionality on database
 # TODO: add SELECT functionality on database
+# TODO: refactor menu and choices functions
 
 class DBase:
     def __init__(self):
@@ -42,6 +43,15 @@ class Menu:
             "5": self.rtrn
         }
 
+        self.search_wkout_choices = {
+            "1": self.search_wkout_ID,
+            "2": self.search_wkout_DATE,
+            "3": self.search_wkout_SPORT,
+            "4": self.search_wkout_HDR,
+            "5": self.search_wkout_DSC,
+            "6": self.rtrn
+        }
+
     def display_menu(self):
         print('''
         Workout Log Menu:
@@ -77,6 +87,15 @@ class Menu:
             3. Modify last workout
             4. Modify particular workout
             5. Back
+        ''')
+
+    def search_menu(self):
+        print('''
+            1. Search by workout ID
+            2. Search by workout date
+            3. Search by sport
+            4. Search by workout header
+            5. Search by workout description
         ''')
 
 # Run the program
@@ -125,6 +144,31 @@ class Menu:
             print (excercise)
 
 # Search workout
+
+    def search_run(self):
+        while True:
+            self.search_menu()
+            choice = input("Enter an option: ")
+            action = self.search_wkout_choices.get(choice)
+            if action:
+                action()
+            else:
+                print(f"{choice} is not a valid choice.")
+
+    def search_wkout_ID(self):
+        pass
+
+    def search_wkout_DATE(self):
+        pass
+
+    def search_wkout_SPORT(self):
+        pass
+
+    def search_wkout_HDR(self):
+        pass
+
+    def search_wkout_DSC(self):
+        pass
 
     def search_wkout(self):
         get_id = input("Select ID to find: ")
