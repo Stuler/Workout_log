@@ -129,7 +129,7 @@ class Menu:
 
     def show_wkout(self):
         try:
-            self.wkOut_ID = int(input("Workout ID: "))
+            self.wkOut_ID = self.get_wkout_ID()
             self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
             self.excrs = DBase().database.show_excr(self.wkOut_ID)
             self.print_wkOut(self.wkOut)
@@ -156,34 +156,35 @@ class Menu:
                 print(f"{choice} is not a valid choice.")
 
     def get_wkout_ID(self):
-        pass
+        self.wkout_ID = input("Enter searched ID: ")
+        return (self.wkout_ID)
 
     def get_wkout_DATE(self):
-        pass
+        self.wkout_DATE = input("Enter date of a workout: ")
+        return (self.wkout_DATE)
 
     def get_wkout_SPORT(self):
-        pass
+        self.wkout_SPORT = input("Enter searched sport: ")
+        return (self.wkout_SPORT)
 
     def get_wkout_HDR(self):
-        pass
+        self.wkout_HDR = input("Enter workout header: ")
+        return (self.wkout_HDR)
 
     def get_wkout_DSC(self):
-        pass
-
-    def search_wkout(self):
-        self.wkout_ID = input("Enter searched ID: ")
-        self.wkout_DATE = input("Enter date of a workout: ")
-        self.wkout_SPORT = input("Enter searched sport: ")
-        self.wkout_HDR = input("Enter workout header: ")
         self.wkout_DSC = input("Enter workout description: ")
+        return (self.wkout_DSC)
+
+    def search_wkout(self):      
         self.wkouts = DBase().database.search_wkout(
-                                                    self.wkout_ID,
-                                                    self.wkout_DATE,
-                                                    self.wkout_SPORT,
-                                                    self.wkout_HDR,
-                                                    self.wkout_DSC        
-                                                    )
-        print (self.wkouts)
+            self.get_wkout_ID(),
+            self.get_wkout_DATE(),
+            self.get_wkout_SPORT(),
+            self.get_wkout_HDR(),
+            self.get_wkout_DSC()        
+            )
+        for wkout in self.wkouts:
+            print(wkout)
 
 # Add workout functionality
 
