@@ -4,6 +4,7 @@ from database import Database
 # TODO: add UPDATE functionality on database
 # TODO: add SELECT functionality on database
 # TODO: refactor menu and choices functions
+# TODO: fix printout formatting
 
 class DBase:
     def __init__(self):
@@ -183,8 +184,7 @@ class Menu:
             self.get_wkout_HDR(),
             self.get_wkout_DSC()        
             )
-        for wkout in self.wkouts:
-            print(wkout)
+        self.print_wkOuts(self.wkouts)
 
 # Add workout functionality
 
@@ -265,6 +265,13 @@ class Menu:
                     Name:   {self.wkOut[3]}    
                     Note:   {self.wkOut[4]}
                     ''')
+
+    def print_wkOuts(self, wkOuts):
+        self.wkOuts_lst = list(enumerate(wkOuts, start=1))
+        print("ID       DATE            SPORT             NAME          DESCRIPTION")
+        print(80*"*")
+        for i in self.wkOuts_lst:
+            print(f"{i[1][0]}       {i[1][1]}       {i[1][2]}           {i[1][3]}           {i[1][4]}")
 
     def print_excrs(self, excrs):
         #for (id, wid, name, load, reps, rpe, ri, note) in self.excrs:
