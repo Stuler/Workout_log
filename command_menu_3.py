@@ -2,9 +2,8 @@ import sys
 from database import Database
 
 # TODO: add UPDATE functionality on database
-# TODO: add SELECT functionality on database
 # TODO: refactor menu and choices functions
-# TODO: fix printout formatting
+# TODO: add multiple criterium search functionality
 
 class DBase:
     def __init__(self):
@@ -268,10 +267,10 @@ class Menu:
 
     def print_wkOuts(self, wkOuts):
         self.wkOuts_lst = list(enumerate(wkOuts, start=1))
-        print("ID       DATE            SPORT             NAME          DESCRIPTION")
+        print(f"{'ID':6}{'DATE':16}{'SPORT':20}{'NAME':20}{'DESCRIPTION'}") 
         print(80*"*")
         for i in self.wkOuts_lst:
-            print(f"{i[1][0]}       {i[1][1]}       {i[1][2]}           {i[1][3]}           {i[1][4]}")
+            print(f"{i[1][0]!s:6}{i[1][1]:16}{i[1][2]:20}{i[1][3]:20}{i[1][4]}")
 
     def print_excrs(self, excrs):
         #for (id, wid, name, load, reps, rpe, ri, note) in self.excrs:
