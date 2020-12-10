@@ -4,6 +4,7 @@ from database import Database
 # TODO: add UPDATE functionality on database
 # TODO: refactor menu and choices functions
 # TODO: add multiple criterium search functionality
+# TODO: incorporate DATETIME 
 
 class DBase:
     def __init__(self):
@@ -273,7 +274,6 @@ class Menu:
             print(f"{i[1][0]!s:6}{i[1][1]:16}{i[1][2]:20}{i[1][3]:20}{i[1][4]}")
 
     def print_excrs(self, excrs):
-        #for (id, wid, name, load, reps, rpe, ri, note) in self.excrs:
         self.exc_lst = list(enumerate(self.excrs, start=1))
         for i in self.exc_lst:
             print(f'''
