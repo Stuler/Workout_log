@@ -16,7 +16,7 @@ class Menu:
         self.main_choices = {
             "1": self.show_wkouts_run,
             "2": self.add_wkout,
-            "3": self.modify_wkout,
+            "3": self.modify_wkout_run,
             "4": self.delete_wkout,
             "5": self.quit
         }
@@ -40,7 +40,7 @@ class Menu:
             "1": self.show_wkouts,
             "2": self.search_wkout,
             "3": self.modify_last_wkout,
-            "4": self.modify_wkout,
+            "4": self.modify_part_wkout,
             "5": self.rtrn
         }
 
@@ -202,10 +202,20 @@ class Menu:
 
 # Modify workout functionality
 
-    def modify_last_wkout(self):
+    def modify_wkout_run(self):
+        while True:
+            self.modify_wkout_menu()
+            choice = input("Enter an option: ")
+            action = self.modify_wkout_choices.get(choice)
+            if action:
+                action()
+            else:
+                print(f"{choice} is not a valid choice.")
+    
+    def modify_part_wkout(self):
         pass
 
-    def modify_wkout(self):
+    def modify_last_wkout(self):
         pass
 
 # Delete functionality
