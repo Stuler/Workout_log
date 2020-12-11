@@ -86,7 +86,7 @@ class Menu:
     def modify_wkout_menu(self):
         print('''
             1. Show all workouts
-            2. Show last workouts
+            2. Show last workout
             3. Modify last workout
             4. Modify particular workout
             5. Back
