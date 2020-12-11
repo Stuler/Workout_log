@@ -128,22 +128,21 @@ class Menu:
     def show_wkouts(self):
         self.wkouts = DBase().database.show_wkouts()
         for self.wkOut in self.wkouts:
-            self.print_wkOut()
+            self.print_wkOut(self.wkOut)
 
     def show_wkout(self):
         try:
             self.wkOut_ID = self.get_wkout_ID()
             self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
             self.excrs = DBase().database.show_excr(self.wkOut_ID)
-            self.print_wkOut()
+            self.print_wkOut(self.wkOut)
             self.print_excrs()
         except TypeError:
             print("Non-existing ID: ", self.wkOut_ID)
   
     def show_last_wkout(self):
-        self.last_wkout = DBase().database.show_last_wkout()
-        for self.wkOut in self.last_wkout:
-            self.print_wkOuts(self.wkOut)
+        self.last_wkOut = DBase().database.show_last_wkout()
+        self.print_wkOut(self.last_wkOut)
 
     def show_excr(self):
         self.excs = self.database.show_excr()
@@ -273,13 +272,13 @@ class Menu:
 
 # Print out functions
 
-    def print_wkOut(self):
+    def print_wkOut(self, wkOut):
         print(f'''
-            Workout ID:     {self.wkOut[0]}  
-                    Date:   {self.wkOut[1]}    
-                    Sport:  {self.wkOut[2]}
-                    Name:   {self.wkOut[3]}    
-                    Note:   {self.wkOut[4]}
+            Workout ID:     {wkOut[0]}  
+                    Date:   {wkOut[1]}    
+                    Sport:  {wkOut[2]}
+                    Name:   {wkOut[3]}    
+                    Note:   {wkOut[4]}
                     ''')
 
     def print_wkOuts(self, wkOuts):
