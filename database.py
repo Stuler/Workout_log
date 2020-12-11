@@ -60,11 +60,12 @@ class Database():
         wkouts = self.cur_wkout.fetchall()
         return wkouts
 
-    def show_last_wkouts(self, wkOutCount):
-        show_wkout_query = '''SELECT * from wkout_lst'''
+    def show_last_wkout(self):
+        show_wkout_query = '''SELECT * from wkout_lst 
+                            ORDER BY id DESC LIMIT 1'''
         self.cur_wkout.execute(show_wkout_query)
-        wkouts = self.cur_wkout.fetchmany(wkOutCount)
-        return wkouts
+        self.last_wkout = self.cur_wkout.fetchone()
+        return self.last_wkout
 
     def show_wkout(self, id):
         show_wkout_query = '''SELECT * from wkout_lst where id = ?'''
