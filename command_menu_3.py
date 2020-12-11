@@ -23,9 +23,10 @@ class Menu:
 
         self.show_wkouts_choices = {
             "1": self.show_wkouts,
-            "2": self.search_wkout,
-            "3": self.show_wkout,
-            "4": self.rtrn
+            "2": self.show_last_wkout,
+            "3": self.search_wkout,
+            "4": self.show_wkout,
+            "5": self.rtrn
         }
 
         self.add_wkout_choices = {
@@ -67,9 +68,10 @@ class Menu:
     def show_wkouts_menu(self):
         print('''
             1. Show all workouts
-            2. Search workout
-            3. Show workout details
-            4. Back
+            2. Show last workout
+            3. Search workout
+            4. Show workout details
+            5. Back
         ''')
     
     def add_wkout_menu(self):
@@ -137,7 +139,11 @@ class Menu:
             self.print_excrs(self.excrs)
         except TypeError:
             print("Non-existing ID!")
-            print(self.wkOut_ID)     
+            print(self.wkOut_ID)    
+
+    def show_last_wkout(self):
+        self.last_wkout = DBase().database.show_last_wkout()
+        print(self.last_wkout)
 
     def show_excr(self):
         self.excs = self.database.show_excr()
