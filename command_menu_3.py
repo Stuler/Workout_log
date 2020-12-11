@@ -128,22 +128,22 @@ class Menu:
     def show_wkouts(self):
         self.wkouts = DBase().database.show_wkouts()
         for self.wkOut in self.wkouts:
-            self.print_wkOut(self.wkOut)
+            self.print_wkOut()
 
     def show_wkout(self):
         try:
             self.wkOut_ID = self.get_wkout_ID()
             self.wkOut = DBase().database.show_wkout(self.wkOut_ID)
             self.excrs = DBase().database.show_excr(self.wkOut_ID)
-            self.print_wkOut(self.wkOut)
-            self.print_excrs(self.excrs)
+            self.print_wkOut()
+            self.print_excrs()
         except TypeError:
-            print("Non-existing ID!")
-            print(self.wkOut_ID)    
-
+            print("Non-existing ID: ", self.wkOut_ID)
+  
     def show_last_wkout(self):
         self.last_wkout = DBase().database.show_last_wkout()
-        print(self.last_wkout)
+        for self.wkOut in self.last_wkout:
+            self.print_wkOuts(self.wkOut)
 
     def show_excr(self):
         self.excs = self.database.show_excr()
@@ -273,7 +273,7 @@ class Menu:
 
 # Print out functions
 
-    def print_wkOut(self, wkOut):
+    def print_wkOut(self):
         print(f'''
             Workout ID:     {self.wkOut[0]}  
                     Date:   {self.wkOut[1]}    
@@ -289,7 +289,7 @@ class Menu:
         for i in self.wkOuts_lst:
             print(f"{i[1][0]!s:6}{i[1][1]:16}{i[1][2]:20}{i[1][3]:20}{i[1][4]}")
 
-    def print_excrs(self, excrs):
+    def print_excrs(self):
         self.exc_lst = list(enumerate(self.excrs, start=1))
         for i in self.exc_lst:
             print(f'''
