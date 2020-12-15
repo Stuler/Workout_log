@@ -101,7 +101,7 @@ class Database():
         added_excr = self.cur_excr.fetchone()
         print(added_excr, "\n")
 
-    def modify_wkout(self, date, sport, header, desc):
+    def modify_wkout(self, date, sport, header, desc, id):
         modify_query = '''UPDATE wkout_lst set 
                         wkout_date=?,
                         sport=?,
@@ -109,6 +109,6 @@ class Database():
                         wkout_desc=? 
                         WHERE id=?
                         '''
-        new_values = (date, sport, header, desc)
+        new_values = (date, sport, header, desc, id)
         self.cur_wkout.execute(modify_query, new_values)
         self.conn.commit()

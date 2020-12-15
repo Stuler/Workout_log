@@ -6,6 +6,7 @@ from database import Database
 # TODO: add multiple criterium search functionality
 # TODO: incorporate DATETIME 
 # TODO: modify printout function for "show all workouts"
+# TODO: implement add_set function
 
 class DBase:
     def __init__(self):
@@ -55,6 +56,15 @@ class Menu:
             "6": self.rtrn
         }
 
+        self.modify_workout_params = {
+            "1": self.modify_part_wkout,
+            "2": self.modify_part_wkout,
+            "3": self.modify_part_wkout,
+            "4": self.modify_part_wkout,
+            "5": self.modify_part_wkout,
+            "6": self.rtrn
+        }
+
     def display_menu(self):
         print('''
         Workout Log Menu:
@@ -92,6 +102,16 @@ class Menu:
             4. Modify particular workout
             5. Back
         ''')
+
+    def modify_wkout_params_menu(self):
+        print('''
+            1. Modify workout date
+            2. Modify workout sport
+            3. Modify workout header
+            4. Modify workout description
+            5. Edit excercises
+            6. Back
+            ''')
 
     def search_menu(self):
         print('''
@@ -217,11 +237,19 @@ class Menu:
                 action()
             else:
                 print(f"{choice} is not a valid choice.")
-    
-    def modify_part_wkout(self):
-        pass
 
-    def modify_last_wkout(self):
+    def modify_wkout(self):
+        pass
+  
+    def modify_part_wkout(self):
+        self.id = self.get_wkout_ID()
+        self.date = self.get_wkout_DATE()
+        self.sport = self.get_wkout_SPORT()
+        self.header = self.get_wkout_HDR()
+        self.desc = self.get_wkout_DSC()
+        DBase().database.modify_wkout(self.date, self.sport, self.header, self.desc, self.id)
+
+    def modify_last_wkout(self, param):
         pass
 
 # Delete functionality
