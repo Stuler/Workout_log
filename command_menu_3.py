@@ -5,6 +5,7 @@ from database import Database
 # TODO: refactor menu and choices functions
 # TODO: add multiple criterium search functionality
 # TODO: incorporate DATETIME 
+# TODO: modify printout function for "show all workouts"
 
 class DBase:
     def __init__(self):
@@ -39,7 +40,7 @@ class Menu:
 
         self.modify_wkout_choices = {
             "1": self.show_wkouts,
-            "2": self.search_wkout,
+            "2": self.show_last_wkout,
             "3": self.modify_last_wkout,
             "4": self.modify_part_wkout,
             "5": self.rtrn
