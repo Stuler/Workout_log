@@ -67,13 +67,13 @@ class Menu:
 
     def display_menu(self):
         print('''
-        Workout Log Menu:
-        
-        1. Show workouts
-        2. Add new workout
-        3. Modify workout
-        4. Remove workout
-        5. Quit 
+            Workout Log Menu:
+            
+            1. Show workouts
+            2. Add new workout
+            3. Modify workout
+            4. Remove workout
+            5. Quit 
         ''')
 
     def show_wkouts_menu(self):
@@ -247,9 +247,10 @@ class Menu:
         self.sport = self.get_wkout_SPORT()
         self.header = self.get_wkout_HDR()
         self.desc = self.get_wkout_DSC()
-        DBase().database.modify_wkout(self.date, self.sport, self.header, self.desc, self.id)
+        DBase().database.modify_wkout(self.date, self.sport, 
+                            self.header, self.desc, self.id)
 
-    def modify_last_wkout(self, param):
+    def modify_last_wkout(self):
         pass
 
 # Delete functionality
