@@ -57,12 +57,11 @@ class Menu:
         }
 
         self.modify_workout_params = {
-            "1": self.modify_part_wkout,
-            "2": self.modify_part_wkout,
-            "3": self.modify_part_wkout,
-            "4": self.modify_part_wkout,
-            "5": self.modify_part_wkout,
-            "6": self.rtrn
+            "1": self.modify_wkout_DATE,
+            "2": self.modify_wkout_SPORT,
+            "3": self.modify_wkout_HDR,
+            "4": self.modify_wkout_DSC,
+            "5": self.rtrn
         }
 
     def display_menu(self):
